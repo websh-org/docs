@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/_styles/styles.css">
+  </link>
+  <title>File API Commands</title>
+</head>
+
+<body>
+  <main>
+    <nav>
+      
+      
+      <a class="item" data-toc-depth="0"" data-toc-active="false"
+        href=" /">
+        WebShell Docs
+      </a >
+      
+      
+      <span class="item" data-toc-depth="1"" data-toc-active="false"
+        href=" /getting-started/">
+        Getting Started
+      </span >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /getting-started/sandbox">
+        Visit WebShell Sandbox
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /getting-started/template-repos">
+        App Template Repos
+      </a >
+      
+      
+      <span class="item" data-toc-depth="1"" data-toc-active="false"
+        href=" /api/">
+        App API Docs
+      </span >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /api/how-it-works">
+        How It Works
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /api/app-manifest">
+        App Manifest
+      </a >
+      
+      
+      <span class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /api/file/">
+        File API
+      </span >
+      
+      
+      <a class="item" data-toc-depth="3"" data-toc-active="false"
+        href=" /api/file/manifest">
+        Manifest
+      </a >
+      
+      
+      <a class="item" data-toc-depth="3"" data-toc-active="true"
+        href=" /api/file/commands">
+        Commands
+      </a >
+      
+      
+      <a class="item" data-toc-depth="1"" data-toc-active="false"
+        href=" /packages/">
+        Npm Packages
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /packages/web-shell-app">
+        web-shell-app
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /packages/remote-slave-port">
+        remote-slave-port
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /packages/remote-master-port">
+        remote-master-port
+      </a >
+      
+      
+      <a class="item" data-toc-depth="1"" data-toc-active="false"
+        href=" /about">
+        About
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /milestones">
+        Milestones
+      </a >
+      
+    </nav>
+    
+    <article class="markdown-body">
+      <h1>File API Commands</h1>
+      
+      <h3 id="file-new">file-new</h3>
+<p>Create an empty document.</p>
+<h4 id="synopsys">Synopsys</h4>
+<pre><code class="language-js">Command &quot;file-new&quot; {} =&gt; true</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="language-js">WebShellApp.command( &quot;file-new&quot;, async function () { 
+  await myEditor.emptyContent();
+  return true;
+})</code></pre>
+<h4 id="workflow">Workflow</h4>
+<ol>
+<li>The user clicks the <strong>File &gt; New</strong> button</li>
+<li>WebShell sends the command to the app</li>
+<li>The app creates a new empty document</li>
+<li>The app returns <code>true</code></li>
+<li>WebShell sets the current file in accordance with the manifest<blockquote>
+<p>The file is named <code>New [label].[extension]</code></p>
+</blockquote>
+</li>
+</ol>
+<h3 id="file-open">file-open</h3>
+<p>The app receives the content of the file to be opened, as well as its extension and the ID of its format (this will be one of the formats specified in the app&#39;s manifest). The type of <code>content</code> depends on the encoding specified in the format.</p>
+<h4 id="synopsis">Synopsis</h4>
+<pre><code class="language-js">Command &quot;file-open&quot; { String extension, String format, Varying content } =&gt; true</code></pre>
+<h4 id="errors">Errors</h4>
+<pre><code class="language-js">Error &quot;file-cannot-open&quot; { String reason }</code></pre>
+<p>Throw if the received content does not match the supplied expected format.</p>
+<h4 id="example-1">Example</h4>
+<pre><code class="language-js">WebShellApp.command(&quot;file-open&quot;, async function ({format, content, extension}) { 
+  try {
+    await myEditor.setContent(content);
+  } catch (error) {
+    this.throw(&quot;file-cannot-open&quot;, { 
+      reason: String(error) 
+    })
+  }
+  return true;
+})</code></pre>
+<h4 id="workflow-1">Workflow</h4>
+<ol>
+<li>The user clicks the <strong>File &gt; Open</strong> button</li>
+<li>WebShell displays the <strong>File Open</strong> dialog to allow the user tp choose a file.</li>
+<li>WebShell sends the command to the app</li>
+<li>The app creates a new document from the file&#39;s contents.</li>
+<li>The app returns <code>true</code><blockquote>
+<p>If the app throws an error, WebShell display it and skips the following steps.</p>
+</blockquote>
+</li>
+<li>WebShell sets the current file to the opened file</li>
+</ol>
+<h3 id="file-save">file-save</h3>
+<p>The app receives the format and the extension of the file that is to be saved, and returns the content of the file that will be saved. The expected type of <code>content</code> depends on the encoding specified in the manifest. The default mime type specified in the format in the manifest will be used for the saved file.</p>
+<h4 id="synopsis-1">Synopsis</h4>
+<pre><code class="language-js">Command &quot;file-save&quot; { String extension,  String format } =&gt; { content }</code></pre>
+<h4 id="example-2">Example</h4>
+<pre><code class="language-js">WebShellApp.command(&quot;file-open&quot;, async function ({format, extension}) { 
+  switch (format) {
+    case &quot;text&quot;: return ({ 
+      content: await myEditor.getText() 
+    })
+    case &quot;myFormat&quot;: return ({ 
+      content: await myEditor.getContent() 
+    })
+  }
+})</code></pre>
+<h4 id="workflow-2">Workflow</h4>
+<h5 id="save">Save</h5>
+<ol>
+<li>The user clicks the <strong>File &gt; Save</strong></li>
+<li>WebShell sends the command to the app, with <code>format</code> and <code>extension</code> set according to the current file.</li>
+<li>The app creates the file content from its current document</li>
+<li>The app returns the content.</li>
+<li>WebShell saves the file.</li>
+</ol>
+<h5 id="save-as">Save As</h5>
+<ol>
+<li>The user clicks <strong>File &gt; Save As</strong> button</li>
+<li>WebShell displays the <strong>File Save As</strong> dialog to allow the user to choose a file name and format.</li>
+<li>WebShell sends the command to the app, setting <code>format</code> and <code>extension</code> from the dialog.</li>
+<li>The app creates the file content from its current document.</li>
+<li>The app returns the content.</li>
+<li>WebShell saves the file</li>
+<li>WebShell sets the current file to the new file name and format.</li>
+</ol>
+
+    </article>
+  </main>
+</body>
+
+</html>

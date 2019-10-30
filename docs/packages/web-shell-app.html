@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/_styles/styles.css">
+  </link>
+  <title>@websh/web-shell-app</title>
+</head>
+
+<body>
+  <main>
+    <nav>
+      
+      
+      <a class="item" data-toc-depth="0"" data-toc-active="false"
+        href=" /">
+        WebShell Docs
+      </a >
+      
+      
+      <span class="item" data-toc-depth="1"" data-toc-active="false"
+        href=" /getting-started/">
+        Getting Started
+      </span >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /getting-started/sandbox">
+        Visit WebShell Sandbox
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /getting-started/template-repos">
+        App Template Repos
+      </a >
+      
+      
+      <span class="item" data-toc-depth="1"" data-toc-active="false"
+        href=" /api/">
+        App API Docs
+      </span >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /api/how-it-works">
+        How It Works
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /api/app-manifest">
+        App Manifest
+      </a >
+      
+      
+      <span class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /api/file/">
+        File API
+      </span >
+      
+      
+      <a class="item" data-toc-depth="3"" data-toc-active="false"
+        href=" /api/file/manifest">
+        Manifest
+      </a >
+      
+      
+      <a class="item" data-toc-depth="3"" data-toc-active="false"
+        href=" /api/file/commands">
+        Commands
+      </a >
+      
+      
+      <a class="item" data-toc-depth="1"" data-toc-active="false"
+        href=" /packages/">
+        Npm Packages
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="true"
+        href=" /packages/web-shell-app">
+        web-shell-app
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /packages/remote-slave-port">
+        remote-slave-port
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /packages/remote-master-port">
+        remote-master-port
+      </a >
+      
+      
+      <a class="item" data-toc-depth="1"" data-toc-active="false"
+        href=" /about">
+        About
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /milestones">
+        Milestones
+      </a >
+      
+    </nav>
+    
+    <article class="markdown-body">
+      <h1>@websh/web-shell-app</h1>
+      
+      <p><strong><a href="https://github.com/websh-org/web-shell-app">https://github.com/websh-org/web-shell-app</a></strong></p>
+<p>The WebShell library for apps. For now, this is is just a wrapper for <a href="remote-slave-port">remote-slave-port</a>. In the future, it might offer more specialized behaviour for WebShell apps.</p>
+<h2 id="synopsis">Synopsis</h2>
+<pre><code class="language-bash">$ npm install @websh/web-shell-app</code></pre>
+<pre><code class="language-js">import WebShellApp from &quot;@websh/web-shell-app&quot;;
+
+WebShellApp.manifest({
+  ... 
+})
+
+WebShellApp.command(&#39;command-id&#39;, async function ({arg1,arg2}) {
+  // the handler can be, but doesn&#39;t have to be async
+  try {
+    const res = await myApp.executeCommand(arg1,arg2);
+    return res;
+  } catch (error) {
+
+    WebShellApp.throw(&#39;error-code&#39;,error)
+
+  }
+})
+
+</code></pre>
+<p><strong>NOTE</strong>: Command ids, args for each command, expected results, errors and events, are defined in app APIs.</p>
+
+    </article>
+  </main>
+</body>
+
+</html>

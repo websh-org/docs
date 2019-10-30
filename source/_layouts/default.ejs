@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/_styles/styles.css">
+  </link>
+  <title><%= page.title || "Docs" %></title>
+</head>
+
+<body>
+  <main>
+    <nav>
+      <% for (const p of site.toc) { %>
+      
+      <<%- p.link ? "a" : "span" %> class="item" data-toc-depth="<%= p.depth %>"" data-toc-active="<%= p.path === page.path %>"
+        href=" <%= p.path %>">
+        <%= p.title %>
+      </<%- p.link ? "a" : "span" %> >
+      <% } %>
+    </nav>
+    <% if (page.title) { %>
+    <article class="markdown-body">
+      <h1><%= page.title %></h1>
+      <% } %>
+      <%- content %>
+    </article>
+  </main>
+</body>
+
+</html>

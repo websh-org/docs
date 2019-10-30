@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/_styles/styles.css">
+  </link>
+  <title>fs-api</title>
+</head>
+
+<body>
+  <main>
+    <nav>
+      
+      
+      <a class="item" data-toc-depth="0"" data-toc-active="false"
+        href=" /">
+        WebShell Docs
+      </a >
+      
+      
+      <span class="item" data-toc-depth="1"" data-toc-active="false"
+        href=" /getting-started/">
+        Getting Started
+      </span >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /getting-started/sandbox">
+        Visit WebShell Sandbox
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /getting-started/template-repos">
+        App Template Repos
+      </a >
+      
+      
+      <span class="item" data-toc-depth="1"" data-toc-active="false"
+        href=" /api/">
+        App API Docs
+      </span >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /api/how-it-works">
+        How It Works
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /api/app-manifest">
+        App Manifest
+      </a >
+      
+      
+      <span class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /api/file/">
+        File API
+      </span >
+      
+      
+      <a class="item" data-toc-depth="3"" data-toc-active="false"
+        href=" /api/file/manifest">
+        Manifest
+      </a >
+      
+      
+      <a class="item" data-toc-depth="3"" data-toc-active="false"
+        href=" /api/file/commands">
+        Commands
+      </a >
+      
+      
+      <a class="item" data-toc-depth="1"" data-toc-active="false"
+        href=" /packages/">
+        Npm Packages
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /packages/web-shell-app">
+        web-shell-app
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /packages/remote-slave-port">
+        remote-slave-port
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /packages/remote-master-port">
+        remote-master-port
+      </a >
+      
+      
+      <a class="item" data-toc-depth="1"" data-toc-active="false"
+        href=" /about">
+        About
+      </a >
+      
+      
+      <a class="item" data-toc-depth="2"" data-toc-active="false"
+        href=" /milestones">
+        Milestones
+      </a >
+      
+    </nav>
+    
+    <article class="markdown-body">
+      <h1>fs-api</h1>
+      
+      <h1 id="fs-api">FS API</h1>
+<h2 id="fs-volumes">FS Volumes</h2>
+<h3 id="fs-volume-mount">fs-volume-mount</h3>
+<p>Open a FS adapter in an iframe and connect it to the file system.</p>
+<pre><code class="language-js">Command &quot;fs-volume-mount&quot; { String url, HTMLIframeElement iframe } =&gt; { String vid }
+
+Error &quot;fs-volume-already-mounted&quot; { vid }</code></pre>
+<h3 id="fs-volume-umount">fs-volume-umount</h3>
+<p>Ask the FS volume to disconnect nicely. </p>
+<pre><code class="language-js">Command &quot;fs-volume-umount&quot; { String vid } =&gt; &quot;OK&quot;
+
+Error &quot;fs-volume-not-mounted&quot; { vid }</code></pre>
+<h3 id="fs-volume-umount-force">fs-volume-umount-force</h3>
+<p>Force unload an app.</p>
+<pre><code class="language-js">Command &quot;fs-volume-umount-force&quot; { String appid } =&gt; &quot;OK&quot;
+
+Error &quot;fs-volume-not-mounted&quot; { String appid }</code></pre>
+<h2 id="fs-file-operations">FS File Operations</h2>
+<blockquote>
+<p>File operations should probably support multiple encodings, to make it easier for UI developers. Recoding should be done in one place, either here or in the shell.</p>
+</blockquote>
+<blockquote>
+<p>There are currently no explicit operations for folders. <code>fs-file-get</code> can read folder contents. Anything that is a folder (i.e. can have children) should have its <code>.is.folder</code> set to <code>true</code>. </p>
+</blockquote>
+<h3 id="fs-file-get">fs-file-get</h3>
+<p>Get information for a path in the FS, possibly including the content.</p>
+<pre><code class="language-js">Command &quot;fs-file-get&quot; { 
+  String path, 
+  Object include: { 
+    Boolean parent, 
+    Boolean parents, 
+    Boolean children, 
+    Boolean content 
+  } =&gt; WebShellFile
+
+Error &quot;fs-not-found&quot; { String path }
+Error &quot;fs-access-denied&quot; { String path }</code></pre>
+<h3 id="fs-file-create">fs-file-create</h3>
+<p>Create a named file at a path in the FS.</p>
+<blockquote>
+<p>Should this create folders if type is <code>folder/directory</code>? Are directories the only kind of folder that we might want to create? </p>
+</blockquote>
+<pre><code class="language-js">Command &quot;fs-file-create&quot; { 
+  String parentpath, 
+  String name,
+  String type,
+  ArrayBuffer content,
+  Object include: { 
+    Boolean parent, 
+    Boolean parents, 
+    Boolean children, 
+    Boolean content 
+  } =&gt; WebShellFile
+
+Error &quot;fs-not-found&quot; { String path }
+Error &quot;fs-access-denied&quot; { String path }</code></pre>
+<h3 id="fs-file-update">fs-file-update</h3>
+<p>Update the content of a file at a path in the FS.</p>
+<blockquote>
+<p>Should this also update file names, i.e. rename files? Should it update the file parent, i.e. move files?</p>
+</blockquote>
+<pre><code class="language-js">Command &quot;fs-file-update&quot; { 
+  String path, 
+  String type,
+  ArrayBuffer content,
+  Object include: { 
+    Boolean parent, 
+    Boolean parents, 
+    Boolean children, 
+    Boolean content 
+  } =&gt; WebShellFile
+
+Error &quot;fs-not-found&quot; { String path }
+Error &quot;fs-access-denied&quot; { String path }</code></pre>
+
+    </article>
+  </main>
+</body>
+
+</html>
