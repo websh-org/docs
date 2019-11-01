@@ -12,7 +12,7 @@ For each API that it supports, the app must include an entry in the `.api` objec
 
 ````js
 WebShellApp.manifest({
-  V: "0",
+  v: 0,
   String name, 
   String short_name,
   String description,
