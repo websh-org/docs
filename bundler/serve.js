@@ -4,8 +4,13 @@ const fs = require("fs").promises;
 const Path = require('path');
 const SOURCE = Path.resolve(__dirname , "../source");
 const DocBundler = require("./DocBundler.js")
-
 const bundler = new DocBundler({source:SOURCE});
+
+const watch = require('node-watch');
+
+watch(SOURCE, { recursive: true }, async function(evt, name) {
+  await bundler.loadFiles();
+});
 
 async function serve() {
   await bundler.loadFiles();
@@ -16,7 +21,7 @@ async function serve() {
     bundler.serve(req,res,req.path);
   })
   
-  app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+  app.listen(port, () => console.log(`DocBundler listening on port ${port}!`))
 }
 serve();
 

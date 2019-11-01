@@ -6,7 +6,7 @@
     integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
   <link rel="stylesheet" href="/_styles/styles.css">
   </link>
-  <title>README</title>
+  <title>How It Works</title>
 </head>
 
 <body>
@@ -44,8 +44,8 @@
       </span >
       
       
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /api/how-it-works">
+      <a class="item" data-toc-depth="2"" data-toc-active="true"
+        href=" /api/works-how">
         How It Works
       </a >
       
@@ -112,9 +112,29 @@
     </nav>
     
     <article class="markdown-body">
-      <h1>README</h1>
+      <h1>How It Works</h1>
       
-      <p>See <a href="http://websh.org">http://websh.org</a></p>
+      <p>Apps are loaded in iframes inside the WebShell window. Once the app is loaded, it connects to WebShell through an async-enabled
+messaging channel. The app side of the connection is managed by the <code>WebShellApp</code> object from the <code>@websh/web-shell-app</code> package.</p>
+<p>On connection (immediately after the app is loaded), the app sends  to the shell its manifest, which consists of various meta data about the app and the description of its capabilities according to this API. Use <code>WebShellApp.manifest</code> in the app to specify the app&#39;s manifest.</p>
+<p>After connection, the app receives commands from the shell, which it executes and returns the resuls, or throws an error. The result or the error is then transmitted back to the shell. Use <code>WebShellApp.command</code> in the app to register command handlers.</p>
+<p>The app can also send events to the shell. Use <code>WebShellApp.trigger</code> in the app to send an event.</p>
+<p>Commands, expected results, errors and events are defined in various app APIs. </p>
+<h2 id="commands">Commands</h2>
+<p>Commands are sent from the shell to the app. To register a command handler in the app, use e.g.</p>
+<pre><code class="language-js">WebShellApp.command(&#39;test-echo&#39;, function ({ text }) {
+  if (text === undefined) {
+    WebShellApp.throw(&quot;command-bad-arguments&quot;,{ reason: &quot;must supply text&quot; });
+  }
+  return { text }
+})</code></pre>
+<p>Handler functions should return the results as described in each app API. If an error occurrs and the result can not be returned, an error should be thrown. Errors should be thrown using <code>WebShellApp.throw</code>:</p>
+<pre><code class="language-js">WebShellApp.throw(error,data);</code></pre>
+<h2 id="errors">Errors</h2>
+<p>Errors are described in each app API. In addition to those errors, the following may be thrown if no specific error applies.</p>
+<pre><code class="language-js">Error &quot;command-not-allowed&quot; { String reason }
+Error &quot;command-failed&quot; { String reason }
+Error &quot;command-internal-error&quot; { String reason }</code></pre>
 
     </article>
   </main>

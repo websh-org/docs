@@ -2,8 +2,19 @@
 title: How It Works
 ----
 
-Apps are loaded in iframes inside the WebShell window. Once the app is loaded, it connects to WebShell through an async-enabled
+
+
+Apps are loaded in sandboxed iframes inside the WebShell window. Once the app is loaded, it connects to WebShell through an async-enabled
 messaging channel. The app side of the connection is managed by the `WebShellApp` object from the `@websh/web-shell-app` package.
+> The App will be loaded in a sandboxed iframe, with only `allow-scripts` set. 
+> 
+> We specifically exclude `allow-same-origin`. This allows us to securely load apps from anywhere, without worrying about cross-frame security issues. It also means no cookies, as well as no localStorage, sessionStorage etc.
+> 
+> At this point, the only defined App API is the File API, which means that WebShell apps are at most single document editors. 
+> Security restrictions are therefore only relaxed as much as is necessary for that particular use case.
+>
+> The app must be a single-page app. Window navigation is not allowed. If its iframe receives a second `load` event, the app will be unloaded.
+
 
 On connection (immediately after the app is loaded), the app sends  to the shell its manifest, which consists of various meta data about the app and the description of its capabilities according to this API. Use `WebShellApp.manifest` in the app to specify the app's manifest.
 

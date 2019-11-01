@@ -20,38 +20,45 @@ class DocBundler {
   }
 
   async loadFiles() {
+    console.log("Reading from",this.source)
     const names = await recursive(this.source);
     this.files = {};
     for (const name of names) {
-      const file = await this.createFile(name,{});
+      const file = await this.loadFIle(name,{});
       if(!file) continue;
       this.files[file.path]=file;
     }
-    console.log(Object.keys(this.files));
+    console.log(Object.keys(this.files).length, "files read.");
   }
-
+  _toc = null;
   generateToc(path,depth=0,res=[]) {
     const file = this.files[path];
     if (!file) return;
-    if (res.includes(file)) return;
+    if (res.find(r=>r.file===file)) return;
     const conf = file.data.toc || {};
+    //console.log(file.path)
     res.push({
+      file,
       title: conf.title || file.title,
       path: file.path,
       depth,
       link: conf.link !== false
     });
     for (const child of conf.children||[]) {
-      const childPath = file.path.split("/").slice(0,-1).join("/")+"/"+child;
+      const parentPath = file.path.replace(/(.)[/]$/,"$1");
+      //console.log({parentPath,child});
+      const childPath = Path.resolve(parentPath,child)+(child.endsWith("/")?"/":"")
       this.generateToc(childPath,depth+1,res);
     }
     return res;
   }
 
   get toc() {
-    
-    const res = this.generateToc("/");
-    return res;
+    if (!this._toc) {
+      console.log("generating toc")
+      this._toc = this.generateToc("/");
+    }
+    return this._toc;
   }
 
   serve(req,res,path) {
@@ -80,12 +87,14 @@ class DocBundler {
   registerExtension(id,ext) {
     this.extensions[id]=ext;
   }
-  async createFile(absolute) {
+  async loadFIle(absolute) {
     const { ext } = Path.parse(absolute);
     const type = this.extensions[ext.substr(1)];
     const Type = this.types[type];
     if (!Type) return null;
-    return await Type.create(this,absolute)
+    const file = await Type.create(this,absolute)
+    this._toc = null;
+    return file;
   }
 
 }
@@ -93,6 +102,7 @@ class DocBundler {
 class DocFile {
   data = {};
   async create(bundler, absolute) {
+    this.lastModified = new Date().toGMTString();
     this.bundler = bundler;
     this.absolute = absolute;
     this.relative = this.path = absolute.substr(bundler.source.length)
@@ -153,12 +163,23 @@ class DocPage extends DocFile {
     return this.content;
   }
   async serve(req,res) {
+    res.header("last-modified",this.lastModified)
     res.header("content-type","text/html");
+    if (req.method==="HEAD") return res.end();
     res.end(await this.output());
   }
 }
 
 const marked = require('marked');
+const hljs = require("highlight.js");
+
+marked.setOptions({
+  highlight: function(code,lang) {
+    return hljs.highlight(lang,code,true).value;
+  },
+  gfm:true
+})
+
 class DocMarkdown extends DocPage {
   async create(...args) {
     await super.create(...args);

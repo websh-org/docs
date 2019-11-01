@@ -1,8 +1,9 @@
 ----
-title: WebShell Docs
+title: WebShell
 toc: 
   children:
     - getting-started/
+    - app-developer-guide/
     - api/
     - packages/
     - about

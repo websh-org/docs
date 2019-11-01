@@ -7,15 +7,19 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node bundler/build.js",
+    "serve": "node bundler/serve.js",
+    "dev": "cd bundler; nodemon serve.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.7.1",
     "express": "^4.17.1",
+    "highlight.js": "^9.16.1",
     "marked": "^0.7.0",
     "nocache": "^2.1.0",
+    "node-watch": "^0.6.3",
     "recursive-readdir": "^2.2.2",
     "rimraf": "^3.0.0",
     "yaml": "^1.7.2"
