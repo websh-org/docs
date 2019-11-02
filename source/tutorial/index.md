@@ -1,6 +1,6 @@
 ----
 title: Tutorial
-toc:
+nav:
   children:
     - step1
     - step2

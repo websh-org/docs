@@ -1,7 +1,7 @@
 ----
 title: Getting Started
 
-toc:
+nav:
   link: false
   children: 
     - sandbox

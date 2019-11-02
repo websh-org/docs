@@ -1,6 +1,6 @@
 ----
 title: File API
-toc:
+nav:
   link: false
   children:
     - manifest

@@ -1,6 +1,6 @@
 ----
 title: Npm Packages
-toc:
+nav:
   children:
     - web-shell-app
     - remote-slave-port

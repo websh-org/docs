@@ -1,6 +1,6 @@
 ----
 title: Docs
-toc: 
+nav: 
   link: true
   children:
     - app-manifest

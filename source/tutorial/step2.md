@@ -12,9 +12,10 @@ WebShellApp.manifest({
   icon: "icon.png", 
   short_name: "MyApp",  // This is optional
   description: "This is my first WebShell app.",
-  license: "ISC" 
+  license: "ISC" // must be an SPDX-compliant license ID
 })
 ````
+
 Add an icon file called `icon.png` next to our `index.html` file. The file can be named anything
 and be in any standard image format. 
 

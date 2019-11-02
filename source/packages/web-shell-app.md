@@ -1,6 +1,6 @@
 ----
 title: @websh/web-shell-app
-toc:
+nav:
   title: web-shell-app
 ----
 

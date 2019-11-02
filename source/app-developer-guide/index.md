@@ -1,6 +1,6 @@
 ----
 title: App Developer's Guide
-toc:
+nav:
   children:
     - works-how
     - ../tutorial/
@@ -10,12 +10,12 @@ toc:
 
 Your app must include the WebShellApp library.
 
-#### Vanilla JS
+### Vanilla JS
 ````html
 <script src="https://cdn.jsdelivr.net/npm/@websh/web-shell-app/dist/web-shell-app.js">
 ````
 
-#### ES6 Modules
+### ES6 Modules
 
 ````sh
 npm install @websh/web-shell-app
@@ -24,7 +24,7 @@ npm install @websh/web-shell-app
 import { WebShellApp } from "@websh/web-shell-app"
 ````
  
-#### Common JS
+### Common JS
 
 ````sh
 npm install @websh/web-shell-app
@@ -33,7 +33,7 @@ npm install @websh/web-shell-app
 const { WebShellApp } = require("@websh/web-shell-app")
 ````
  
- ## Manifest
+## Manifest
 
 Your app must provide a manifest with information about it. It must be a JSONable object. To specify your app's manifest, use `WebShellApp.manifest()`.
 

@@ -1,6 +1,6 @@
 ----
 title: File API Manifest
-toc:
+nav:
   title: Manifest
 ----
 Add this to your app's manifest to enable file operations.

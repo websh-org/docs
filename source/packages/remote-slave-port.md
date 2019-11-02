@@ -1,6 +1,6 @@
 ----
 title: @websh/remote-slave-port
-toc:
+nav:
   title: remote-slave-port
 ----
 

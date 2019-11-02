@@ -1,6 +1,6 @@
 ----
 title: @websh/remote-master-port
-toc:
+nav:
   title: remote-master-port
 ----
 

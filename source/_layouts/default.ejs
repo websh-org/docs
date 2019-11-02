@@ -2,33 +2,70 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
-    integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
-  <link rel="stylesheet" href="/_styles/styles.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css">
   <link rel="stylesheet" href="/_styles/github.css">
-  <script src="http://livejs.com/live.js"></script>
+  <link rel="stylesheet" href="/_styles/styles.css">
+  <script>
+    function liveReload() {
+      setTimeout(async () => {
+        try {
+          const res = await fetch(location.pathname + "?wait");
+          if (res.ok) history.go(0)
+        } catch { }
+        liveReload();
+      }, 1000);
+    }
+    liveReload();
+  </script>
   </link>
   <title><%= page.title || "Docs" %></title>
 </head>
 
 <body>
-  <main>
-    <nav>
-      <% for (const p of site.toc) { %>
+  <div id="canvas">
+    <header id="header">
+            
+    </header>
+    <div id="main">
+      <nav id="nav"><% 
+      console.log(page.parents)
+      for (const p of site.nav) { 
+        %><a class="item" data-nav-level="<%= p.level %>" data-nav-active="<%= p.path === page.path %>"
+          data-nav-active-within="<%= page.parents.includes(p.path) %>" href=" <%= p.path %>">
+          <%= p.title %>
+        </a><%
+      } 
+
+    %></nav>
+      <article class="markdown-body">
+        <a name="#"></a><%
       
-      <<%- p.link ? "a" : "span" %> class="item" data-toc-depth="<%= p.depth %>"" data-toc-active="<%= p.path === page.path %>"
-        href=" <%= p.path %>">
-        <%= p.title %>
-      </<%- p.link ? "a" : "span" %> >
-      <% } %>
-    </nav>
-    <% if (page.title) { %>
-    <article class="markdown-body">
-      <h1><%= page.title %></h1>
-      <% } %>
-      <%- content %>
-    </article>
-  </main>
+      if (page.title) { 
+        %><h1>
+          <%= page.title %>
+        </h1><%
+      } 
+
+      %><%- content %>
+      </article>
+      <aside><% 
+      if (page.toc && page.toc.length) { 
+        %><nav id="toc">
+          <a class="item" data-toc-level="1" href="##">
+            <%- page.title %>
+          </a><% 
+        for (const p of page.toc) { 
+          %><a class="item" data-toc-level="<%= p.level %>""  href=" #<%= p.slug %>">
+            <%- p.text %>
+          </a><% 
+        } 
+        %></nav><%
+      } 
+
+    %></aside>
+    </div>
+    <div>
 </body>
 
 </html>

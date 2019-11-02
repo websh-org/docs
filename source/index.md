@@ -1,6 +1,6 @@
 ----
 title: WebShell
-toc: 
+nav: 
   children:
     - getting-started/
     - app-developer-guide/
