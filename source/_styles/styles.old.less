@@ -1,0 +1,254 @@
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Fira Sans', sans-serif;
+  margin:0;
+}
+
+a {
+  text-decoration: none;
+}
+
+#canvas {
+
+  --article-width: 940px;
+  --nav-width: 315px;
+  --toc-width: 240px;
+  --total-width: ~"calc( 
+    var(--article-width) + 
+    var(--nav-width) + 
+    var(--toc-width) 
+  )";
+  --margin-width: ~"calc( 
+    50vw - var(--total-width) / 2
+  )";
+  --pane-width: ~"calc(
+    var(--margin-width) + 
+    var(--nav-width)
+  )";
+  --aside-width: ~"calc(
+    var(--margin-width) + 
+    var(--toc-width)
+  )";
+}
+
+#header {
+  position:relative;
+  height:80px;
+  z-index      : 10;
+  border-bottom: solid 1px #ccc;
+  box-shadow   : 0 0 12px #8882;
+}
+
+#main {
+  margin-left: var(--pane-width);
+  margin-right: var(--aside-width);
+}
+
+#pane {
+  float:left;
+  background     : #f5f7f9;
+  box-shadow     : -1px 0 0 0 #E6ECF1 inset;
+  margin-left:  calc(0px - var(--pane-width));
+  width: var(--pane-width);
+  min-height:100vh;
+  position:sticky;
+  top:0;
+}
+
+aside {
+  float:right;
+  position:sticky;
+  top:0px;
+  margin-right:  calc(0px - var(--toc-width));
+  width:var(--toc-width);
+  overflow:hidden;
+}
+
+#content {
+  article {
+    padding   : 30px 90px;
+  }
+}
+
+
+#nav {
+  width: 280px;
+  padding-top:30px;
+  margin-left:auto;
+  cursor         : default;
+  user-select    : none;
+  overflow       : auto;
+  scrollbar-width: thin;
+  padding-left   : 12px;
+
+  >.item {
+    display    : block;
+    color      : #222;
+    word-break : break-word;
+    line-height: 1.5;
+    font-size  : 14px;
+    font-weight: 500;
+    padding:8px 12px;
+
+    &.item[data-nav-level="0"], &[data-nav-level="1"] {
+      flex       : 1;
+      color      : #5C6975;
+    }
+
+    &[data-nav-level="2"],
+    &[data-nav-level="3"],
+    &[data-nav-level="4"] {
+      color       : rgb(157, 170, 182);
+      box-shadow  : 1px 0 0 0 #e5e7e9 inset;
+    }
+
+    &[data-nav-level="2"] {
+      margin-left : 12px;
+    }
+
+    &[data-nav-level="3"] {
+      margin-left : 24px;
+    }
+    &[data-nav-level="4"] {
+      margin-left : 36px;
+    }
+
+    &:not(.visible) {
+      display:none;
+    }
+
+    &:hover {
+      background: #e5e7e9;
+
+    }
+    &.active {
+      padding-left:12px;
+      background: #fff;
+      box-shadow: 0px 0 0 1px #e5e7e9 inset;
+      color     : #38f
+    }
+
+    position:relative;
+
+    &:not([data-nav-level="0"]) {
+      &.openable:after {
+        content:"⧽";
+        position:absolute;
+        display:block;
+        top:12px;
+        right:28px;
+        color:#888;
+        font-size:10px;
+      }
+      &.openable:before {
+        content:"⧽";
+        position:absolute;
+        display:block;
+        top:12px;
+        right:29px;
+        color:#888;
+        font-size:10px;
+      }
+      &.openable.open:after {
+        transform:rotateZ(90deg);
+      }
+      &.openable.open:before {
+        transform:rotateZ(90deg);
+      }
+    }
+  }
+}
+
+
+aside>nav {
+  margin-top: 40px;
+  align-self : flex-start;
+  padding    : 0px 18px;
+  background : white;
+  font-size  : 13px;
+  font-weight: 600;
+  color      : #778;
+  line-height: 1.4;
+  box-shadow : 1px 0 0 0 #e5e7e9 inset;
+}
+
+aside>nav a {
+  color: inherit;
+}
+
+#toc>.item {
+  display      : block;
+  white-space  : nowrap;
+  overflow     : hidden;
+  text-overflow: ellipsis;
+  margin-bottom:10px;
+}
+
+#toc>.item[data-toc-level="1"] {
+  padding-left: 5px;
+  font-size   : 14px;
+  margin-bottom:12px;
+  color       : #aab;
+}
+
+#toc>.item[data-toc-level="2"] {
+  padding-left: 5px;
+}
+
+#toc>.item[data-toc-level="3"] {
+  padding-left: 20px;
+}
+
+#toc>.item[data-toc-level="4"] {
+  padding-left: 35px;
+}
+
+#toc>.item[data-toc-level="5"] {
+  padding-left: 50px;
+}
+
+#toc>.item:hover {
+  color:#38f;
+}
+
+nav::-webkit-scrollbar-track {
+  background-color: #F5F7F9;
+}
+
+nav::-webkit-scrollbar {
+  width           : 6px;
+  background-color: #F5F5F5;
+}
+
+nav::-webkit-scrollbar-thumb {
+  background-color: #d5d7d9;
+  transition      : all 0.5s;
+}
+
+nav:hover::-webkit-scrollbar-thumb {
+  background-color: #c5c7c9;
+}
+
+.markdown-body {
+  font-family: Roboto, sans-serif;
+}
+
+
+.markdown-body pre {
+  font-family: 'Source Code Pro', monospace;
+}
+
+.markdown-body :not(pre)>code {
+  font-family: 'Source Code Pro', monospace;
+  background : none;
+  margin     : 0;
+  padding    : 0;
+  font-weight: 700;
+  color      : #444;
+  font-size  : 95%;
+}

@@ -10,7 +10,8 @@ const SOURCE = Path.resolve(__dirname , "../source");
 const bundler = new DocBundler({source:SOURCE});
 
 watch(SOURCE, { recursive: true }, async function(evt, name) {
-  await bundler.loadFiles();
+  console.log(evt,name)
+  await bundler.loadFile(name);
 });
 
 async function serve() {

@@ -1,17 +1,27 @@
 import Path from "path";
 import marked from "marked";
-
+import hljs from "highlight.js";
 import { DocPage } from "./DocPage.js";
-
-export class DocMarkdown extends DocPage {
-  async create(...args) {
-    await super.create(...args);
-    if (this.parsed.name === "index") {
-      this.path = this.parsed.dir !== "/" ? this.parsed.dir + "/" : "/";
-    } else {
-      this.path = Path.join(this.parsed.dir, this.parsed.name)
+marked.setOptions({
+  highlight: function (code,lang) {
+    try {
+      return hljs.highlight(lang,code).value;
+    } catch {
+      return hljs.highlightAuto(code).value;
     }
   }
+});
+
+export class DocMarkdown extends DocPage {
+
+  get path() {
+    if (this.parsed.name === "index") {
+      return this.parsed.dir !== "/" ? this.parsed.dir + "/" : "/";
+    } else {
+      return Path.join(this.parsed.dir, this.parsed.name)
+    }
+  }
+
   toc = [];
   transform() {
     const toc = [];

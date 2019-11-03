@@ -2,8 +2,14 @@
 <html>
 
 <head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,400i,700,700i&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,500i,600,600i,700,700i&display=swap&subset=latin-ext">
+
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/image.css"
+    integrity="sha256-F35NJZtdA4AJEz0RQVWT2C3xC1WHMf2Kv/ANYLx0q9w=" crossorigin="anonymous" />
   <link rel="stylesheet" href="/_styles/github.css">
   <link rel="stylesheet" href="/_styles/styles.css">
   <script>
@@ -25,45 +31,71 @@
 <body>
   <div id="canvas">
     <header id="header">
-            
+
     </header>
     <div id="main">
-      <nav id="nav"><% 
+        <div id="content">
+            <div id="pane">
+        <nav id="nav"><% 
       console.log(page.parents)
+
+      const visibleLinks = {[page.path]:true};
+      const openLinks = {[page.path]:true};
+      const openableLinks = {};
+
       for (const p of site.nav) { 
-        %><a class="item" data-nav-level="<%= p.level %>" data-nav-active="<%= p.path === page.path %>"
-          data-nav-active-within="<%= page.parents.includes(p.path) %>" href=" <%= p.path %>">
-          <%= p.title %>
-        </a><%
+        if (p.file.parent) openableLinks[p.file.parent] = true;
+        if (page.parents.includes(p.path)) {
+          openLinks[p.path] = visibleLinks[p.path] = true;
+        }
+      }
+      if (openableLinks[page.path]) openLinks[page.path] = true;
+      for (const p of site.nav) { 
+        if (openLinks[p.file.parent]) {
+          visibleLinks[p.path] = true;
+        }
+      }
+      
+      for (const p of site.nav) { 
+        const classes = [
+          openableLinks[p.path] && "openable",
+          openLinks[p.path] && "open",
+          visibleLinks[p.path] && "visible",
+          page.path === p.path && "active"
+        ].filter(Boolean).join(" ");
+        %><a class="item <%- classes %>" data-nav-level="<%= p.level %>" href=" <%= p.path %>">
+            <%= p.title %>
+          </a><%
       } 
 
     %></nav>
-      <article class="markdown-body">
-        <a name="#"></a><%
-      
-      if (page.title) { 
-        %><h1>
-          <%= page.title %>
-        </h1><%
-      } 
-
-      %><%- content %>
-      </article>
+      </div>
       <aside><% 
-      if (page.toc && page.toc.length) { 
-        %><nav id="toc">
+        if (page.toc && page.toc.length) { 
+          %><nav id="toc">
           <a class="item" data-toc-level="1" href="##">
             <%- page.title %>
           </a><% 
-        for (const p of page.toc) { 
-          %><a class="item" data-toc-level="<%= p.level %>""  href=" #<%= p.slug %>">
+          for (const p of page.toc) { 
+            %><a class="item" data-toc-level="<%= p.level %>""  href=" #<%= p.slug %>">
             <%- p.text %>
           </a><% 
+          } 
+          %></nav><%
         } 
-        %></nav><%
+      %></aside>
+        <article class="markdown-body">
+          <a name="#"></a><%
+      
+      if (page.title) { 
+        %><h1>
+            <%= page.title %>
+          </h1><%
       } 
 
-    %></aside>
+      %><%- content %>
+        </article>
+      </div>
     </div>
     <div>
 </body>

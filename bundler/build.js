@@ -1,14 +1,16 @@
-const util = require('util');
+import util from "util";
 
-const rimraf = util.promisify(require("rimraf"));
-const fs = require("fs").promises;
-const Path = require('path');
+import _rimraf from "rimraf";
+import {promises as fs} from "fs"
+import Path from "path";
+import {DocBundler} from "./DocBundler.js"
+
+const __dirname = Path.dirname(new URL(import.meta.url).pathname);
 const SOURCE = Path.resolve(__dirname , "../source");
 const DEST = Path.resolve(__dirname , "../docs");
-const DocBundler = require("./DocBundler.js")
 
 const bundler = new DocBundler({source:SOURCE});
-
+const rimraf = util.promisify(require("rimraf"));
 
 async function build() {
   await bundler.loadFiles();
@@ -22,5 +24,5 @@ async function build() {
     await fs.writeFile(dest,output)
   })
 }
-build();
+//build();
 

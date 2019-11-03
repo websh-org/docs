@@ -4,9 +4,11 @@ import { promises as fs} from "fs";
 import { DocFile } from './DocFile.js';
 
 export class DocPage extends DocFile {
-  async create(...args) {
-    await super.create(...args);
-    this.outfile = this.parsed.name + ".html";
+  get outfile() {
+    return  this.parsed.name + ".html"
+  }
+  async load(...args) {
+    await super.load(...args);
 
     const content = await fs.readFile(this.absolute);
     const lines = String(content).split(/\n/);
@@ -31,12 +33,13 @@ export class DocPage extends DocFile {
   }
 
   async output() {
-    return await this.bundler.layout(this, this.transform());
+    return await this.bundler.layout(this, await this.transform());
   }
 
-  transform() {
+  async transform() {
     return this.content;
   }
+
   async serve(req, res) {
     res.header("last-modified", this.lastModified)
     res.header("content-type", "text/html");
