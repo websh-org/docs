@@ -1,0 +1,26 @@
+<%
+  function ATTR(path,level) {
+    %>class="<%= path === page.path ? 'item active' : 'item' %>" data-level="<%=level%>"<%
+  }
+
+  function NAV(path, level=0) {
+    const file=site.paths[path];
+    if (!file) return;
+ 
+    if (file.navChildren.length) {
+      %><details <%= page.path === path || page.navParents.includes(path) ? "open": "" %>>
+  %><summary <%- ATTR(path, level) %>>
+    <a href="<%= file.path %>"><%= file.title %></a>
+  </summary><%
+        for (let child of file.navChildren) {
+          NAV(child,level+1)
+        }
+      %></details><%
+    } else {
+      %><div <%- ATTR(path, level) %> ><a href="<%= file.path %>"> <%= file.title %></a> </div><%
+    }
+  } 
+  
+%>
+<%- NAV(page.navParents[0]) %>
+

@@ -1,5 +1,5 @@
 ----
-title: WebShell
+title: WebShell!
 nav: 
   children:
     - getting-started/
@@ -11,7 +11,7 @@ nav:
 
 ***NOTE***: This project is in early development stages.
 
-Read [about the project](about).
+Read [about the project](about)
 
 ## Demo
 Visit the [WebShell Sandbox](https://websh.org/sandbox) too see WebShell in action.

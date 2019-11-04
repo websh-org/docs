@@ -7,8 +7,6 @@ nav:
     - remote-master-port
 ----
 
-# WebShell Packages
-
 Webshell packages are namespaced under `@websh` on NPM.
 
 ## Shell-side

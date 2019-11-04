@@ -9,7 +9,7 @@ a {
   text-decoration: none;
 }
 #canvas {
-  --article-width: 920px;
+  --article-width: 940px;
   --nav-width: 315px;
   --toc-width: 240px;
   --total-width: calc( 
@@ -37,24 +37,15 @@ a {
   box-shadow: 0 0 12px #8882;
 }
 #main {
-  display: flex;
-}
-#main:before,
-#main:after {
-  content: "";
-  flex: 1 1 0;
-  display: block;
-}
-#main:before {
-  background: #f5f7f9;
+  margin-left: var(--pane-width);
+  margin-right: var(--aside-width);
 }
 #pane {
-  flex: 1 0 0;
   float: left;
   background: #f5f7f9;
   box-shadow: -1px 0 0 0 #E6ECF1 inset;
-  margin-left: calc(0px - var(--nav-width));
-  width: var(--nav-width);
+  margin-left: calc(0px - var(--pane-width));
+  width: var(--pane-width);
   min-height: 100vh;
   position: sticky;
   top: 0;
@@ -67,15 +58,8 @@ aside {
   width: var(--toc-width);
   overflow: hidden;
 }
-#content {
-  padding-left: var(--nav-width);
-  padding-right: var(--toc-width);
-  flex: 0 1 var(--total-width);
-}
 #content article {
-  max-width: var(--article-width);
   padding: 30px 90px;
-  overflow: auto;
 }
 #nav {
   width: 280px;

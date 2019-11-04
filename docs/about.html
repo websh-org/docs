@@ -2,129 +2,111 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
-    integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,400i,700,700i&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,500i,600,600i,700,700i&display=swap&subset=latin-ext">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/image.css"
+    integrity="sha256-F35NJZtdA4AJEz0RQVWT2C3xC1WHMf2Kv/ANYLx0q9w=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/_styles/github.css">
   <link rel="stylesheet" href="/_styles/styles.css">
+  
   </link>
   <title>About</title>
 </head>
 
 <body>
-  <main>
-    <nav>
-      
-      
-      <a class="item" data-toc-depth="0"" data-toc-active="false"
-        href=" /">
-        WebShell Docs
-      </a >
-      
-      
-      <span class="item" data-toc-depth="1"" data-toc-active="false"
-        href=" /getting-started/">
-        Getting Started
-      </span >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /getting-started/sandbox">
-        Visit WebShell Sandbox
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /getting-started/template-repos">
-        App Template Repos
-      </a >
-      
-      
-      <span class="item" data-toc-depth="1"" data-toc-active="false"
-        href=" /api/">
-        App API Docs
-      </span >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /api/works-how">
-        How It Works
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /api/app-manifest">
-        App Manifest
-      </a >
-      
-      
-      <span class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /api/file/">
-        File API
-      </span >
-      
-      
-      <a class="item" data-toc-depth="3"" data-toc-active="false"
-        href=" /api/file/manifest">
-        Manifest
-      </a >
-      
-      
-      <a class="item" data-toc-depth="3"" data-toc-active="false"
-        href=" /api/file/commands">
-        Commands
-      </a >
-      
-      
-      <a class="item" data-toc-depth="1"" data-toc-active="false"
-        href=" /packages/">
-        Npm Packages
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /packages/web-shell-app">
-        web-shell-app
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /packages/remote-slave-port">
-        remote-slave-port
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /packages/remote-master-port">
-        remote-master-port
-      </a >
-      
-      
-      <a class="item" data-toc-depth="1"" data-toc-active="true"
-        href=" /about">
-        About
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /milestones">
-        Milestones
-      </a >
-      
-    </nav>
-    
-    <article class="markdown-body">
-      <h1>About</h1>
-      
-      <h2 id="webshell">WebShell</h2>
-<p>The WebShell project aims to define and implement a new secure dataflow and the accompanying APIs for allowing users to use their files in Web apps without authorizing the apps to access the user&#39;s file storage. At its core, WebShell consists of a container single-page application which can open remote components (primarily apps and file-system adapters) in sandboxed iframes and communicate with them through HTML5 message channels using the defined APIs. </p>
+  <div id="canvas">
+    <header id="header">
+
+    </header>
+    <div id="main">
+        <div id="content">
+            <div id="pane">
+        <nav id="nav"><a class="item openable open visible" data-nav-level="0" href=" /">
+            WebShell
+          </a><a class="item openable visible" data-nav-level="1" href=" /getting-started/">
+            Getting Started
+          </a><a class="item " data-nav-level="2" href=" /getting-started/sandbox">
+            Visit WebShell Sandbox
+          </a><a class="item " data-nav-level="2" href=" /getting-started/template-repos">
+            App Template Repos
+          </a><a class="item openable visible" data-nav-level="1" href=" /app-developer-guide/">
+            App Developer&#39;s Guide
+          </a><a class="item " data-nav-level="2" href=" /app-developer-guide/works-how">
+            How It Works
+          </a><a class="item openable" data-nav-level="2" href=" /tutorial/">
+            Tutorial
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step1">
+            Step 1 - Import the library
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step2">
+            Step 2 - App manifest
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step3">
+            Step 3 - See it in action
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step4">
+            Step 4 - Declare file operations
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step5">
+            Step 5 - Implement file operations
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step6">
+            Step 6 - Make and publish a real app
+          </a><a class="item openable visible" data-nav-level="1" href=" /api/">
+            Docs
+          </a><a class="item " data-nav-level="2" href=" /api/app-manifest">
+            App Manifest
+          </a><a class="item openable" data-nav-level="2" href=" /api/file/">
+            File API
+          </a><a class="item " data-nav-level="3" href=" /api/file/manifest">
+            Manifest
+          </a><a class="item " data-nav-level="3" href=" /api/file/commands">
+            Commands
+          </a><a class="item openable visible" data-nav-level="1" href=" /packages/">
+            Npm Packages
+          </a><a class="item " data-nav-level="2" href=" /packages/web-shell-app">
+            web-shell-app
+          </a><a class="item " data-nav-level="2" href=" /packages/remote-slave-port">
+            remote-slave-port
+          </a><a class="item " data-nav-level="2" href=" /packages/remote-master-port">
+            remote-master-port
+          </a><a class="item open visible active" data-nav-level="1" href=" /about">
+            About
+          </a></nav>
+      </div>
+      <aside><nav id="toc">
+          <a class="item" data-toc-level="1" href="##">
+            About
+          </a><a class="item" data-toc-level="2""  href=" #webshell">
+            WebShell
+          </a><a class="item" data-toc-level="2""  href=" #why-does-this-actually-matter-to-end-users">
+            Why does this actually matter to end users?
+          </a></nav></aside>
+        <article class="markdown-body">
+          <a name="#"></a><h1>
+            About
+          </h1>
+      <h2>
+        <a name="webshell" class="anchor" href="#webshell">
+          <span class="header-link"></span>
+        </a>
+        WebShell
+      </h2><p>The WebShell project aims to define and implement a new secure dataflow and the accompanying APIs for allowing users to use their files in Web apps without authorizing the apps to access the user&#39;s file storage. At its core, WebShell consists of a container single-page application which can open remote components (primarily apps and file-system adapters) in sandboxed iframes and communicate with them through HTML5 message channels using the defined APIs. </p>
 <p>The project will build a fully-featured WebShell Desktop container, as well as a minimal WebShell container for testing and easy deployment of single apps. In addition, we will integrate a starter set of editor apps for common file types and a starter set of file system adapters, concentrating primarily on non-commercial web storage solutions and self-hosting.</p>
-<h2 id="why-does-this-actually-matter-to-end-users">Why does this actually matter to end users?</h2>
-<p>As soon as you sign up with a free email provider or install an operating system, you usually get some cloud storage space. Accessing your data through an online environment has become commonplace, both for business as for individuals. You can share everything from a grocery list with your significant other or even store sensitive documents in the cloud so you can access them from work or on the road. But to be able to have users upload, edit or create files online and pass them around, many cloud services require full access to users data. Like the extensive (and sometimes unreadable) privacy policies you already had to wade through to open your &#39;free&#39; account, users do not have many options. Either you click yes and the cloud is yours, or you deny the apps all access and are left to your own devices.</p>
+
+      <h2>
+        <a name="why-does-this-actually-matter-to-end-users" class="anchor" href="#why-does-this-actually-matter-to-end-users">
+          <span class="header-link"></span>
+        </a>
+        Why does this actually matter to end users?
+      </h2><p>As soon as you sign up with a free email provider or install an operating system, you usually get some cloud storage space. Accessing your data through an online environment has become commonplace, both for business as for individuals. You can share everything from a grocery list with your significant other or even store sensitive documents in the cloud so you can access them from work or on the road. But to be able to have users upload, edit or create files online and pass them around, many cloud services require full access to users data. Like the extensive (and sometimes unreadable) privacy policies you already had to wade through to open your &#39;free&#39; account, users do not have many options. Either you click yes and the cloud is yours, or you deny the apps all access and are left to your own devices.</p>
 <p>The fact that you want to access your data online, does not mean you need to store it in a place where the provider requires you to hand over the keys. Especially when it is unclear who can use the keys to look around in your documents, or analyze sensitive documents simply for the sake of personally profiled advertising, which quite certainly is not what you signed up for. You would want to know where your data is, lock the doors to it yourself yourself and keep the keys somewhere safe (without any intricate key management or cryptographic busywork).</p>
 <p>WebShell combines these features of complete data control and user-friendly data access in an environment you are already familiar with: an online version of your desktop. Just like when you start up your laptop or home computer, you start up WebShell and go through your files, open an application to edit something, and switch it off again. Instead of these apps requiring full access to your data that is hosted somewhere in the world, you can self-host your data vault (or choose a hosting service you know and trust) and apps never operate on your files directly. The web desktop securely opens and saves your files and only with your express permission.</p>
 <p>This project is funded through the NGI0 PET Fund, a fund established by NLnet with financial support from the European Commission&#39;s Next Generation Internet programme, under the aegis of DG Communications Networks, Content and Technology under grant agreement No 825310. Applications are still open, you can apply today.</p>
 
-    </article>
-  </main>
+        </article>
+      </div>
+    </div>
+    <div>
 </body>
 
 </html>

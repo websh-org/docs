@@ -2,133 +2,103 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
-    integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,400i,700,700i&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,500i,600,600i,700,700i&display=swap&subset=latin-ext">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/image.css"
+    integrity="sha256-F35NJZtdA4AJEz0RQVWT2C3xC1WHMf2Kv/ANYLx0q9w=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/_styles/github.css">
   <link rel="stylesheet" href="/_styles/styles.css">
+  
   </link>
   <title>File API Manifest</title>
 </head>
 
 <body>
-  <main>
-    <nav>
-      
-      
-      <a class="item" data-toc-depth="0"" data-toc-active="false"
-        href=" /">
-        WebShell Docs
-      </a >
-      
-      
-      <span class="item" data-toc-depth="1"" data-toc-active="false"
-        href=" /getting-started/">
-        Getting Started
-      </span >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /getting-started/sandbox">
-        Visit WebShell Sandbox
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /getting-started/template-repos">
-        App Template Repos
-      </a >
-      
-      
-      <span class="item" data-toc-depth="1"" data-toc-active="false"
-        href=" /api/">
-        App API Docs
-      </span >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /api/works-how">
-        How It Works
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /api/app-manifest">
-        App Manifest
-      </a >
-      
-      
-      <span class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /api/file/">
-        File API
-      </span >
-      
-      
-      <a class="item" data-toc-depth="3"" data-toc-active="true"
-        href=" /api/file/manifest">
-        Manifest
-      </a >
-      
-      
-      <a class="item" data-toc-depth="3"" data-toc-active="false"
-        href=" /api/file/commands">
-        Commands
-      </a >
-      
-      
-      <a class="item" data-toc-depth="1"" data-toc-active="false"
-        href=" /packages/">
-        Npm Packages
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /packages/web-shell-app">
-        web-shell-app
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /packages/remote-slave-port">
-        remote-slave-port
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /packages/remote-master-port">
-        remote-master-port
-      </a >
-      
-      
-      <a class="item" data-toc-depth="1"" data-toc-active="false"
-        href=" /about">
-        About
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /milestones">
-        Milestones
-      </a >
-      
-    </nav>
-    
-    <article class="markdown-body">
-      <h1>File API Manifest</h1>
-      
-      <p>Add this to your app&#39;s manifest to enable file operations.</p>
+  <div id="canvas">
+    <header id="header">
+
+    </header>
+    <div id="main">
+        <div id="content">
+            <div id="pane">
+        <nav id="nav"><a class="item openable open visible" data-nav-level="0" href=" /">
+            WebShell
+          </a><a class="item openable visible" data-nav-level="1" href=" /getting-started/">
+            Getting Started
+          </a><a class="item " data-nav-level="2" href=" /getting-started/sandbox">
+            Visit WebShell Sandbox
+          </a><a class="item " data-nav-level="2" href=" /getting-started/template-repos">
+            App Template Repos
+          </a><a class="item openable visible" data-nav-level="1" href=" /app-developer-guide/">
+            App Developer&#39;s Guide
+          </a><a class="item " data-nav-level="2" href=" /app-developer-guide/works-how">
+            How It Works
+          </a><a class="item openable" data-nav-level="2" href=" /tutorial/">
+            Tutorial
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step1">
+            Step 1 - Import the library
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step2">
+            Step 2 - App manifest
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step3">
+            Step 3 - See it in action
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step4">
+            Step 4 - Declare file operations
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step5">
+            Step 5 - Implement file operations
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step6">
+            Step 6 - Make and publish a real app
+          </a><a class="item openable open visible" data-nav-level="1" href=" /api/">
+            Docs
+          </a><a class="item visible" data-nav-level="2" href=" /api/app-manifest">
+            App Manifest
+          </a><a class="item openable open visible" data-nav-level="2" href=" /api/file/">
+            File API
+          </a><a class="item open visible active" data-nav-level="3" href=" /api/file/manifest">
+            Manifest
+          </a><a class="item visible" data-nav-level="3" href=" /api/file/commands">
+            Commands
+          </a><a class="item openable visible" data-nav-level="1" href=" /packages/">
+            Npm Packages
+          </a><a class="item " data-nav-level="2" href=" /packages/web-shell-app">
+            web-shell-app
+          </a><a class="item " data-nav-level="2" href=" /packages/remote-slave-port">
+            remote-slave-port
+          </a><a class="item " data-nav-level="2" href=" /packages/remote-master-port">
+            remote-master-port
+          </a><a class="item visible" data-nav-level="1" href=" /about">
+            About
+          </a></nav>
+      </div>
+      <aside><nav id="toc">
+          <a class="item" data-toc-level="1" href="##">
+            File API Manifest
+          </a><a class="item" data-toc-level="3""  href=" #file-formats-details">
+            File formats details:
+          </a><a class="item" data-toc-level="3""  href=" #example">
+            Example
+          </a></nav></aside>
+        <article class="markdown-body">
+          <a name="#"></a><h1>
+            File API Manifest
+          </h1><p>Add this to your app&#39;s manifest to enable file operations.</p>
 <pre><code class="language-js">{
   ...
   api: {
-    Object file: {
-      String new,
-      Array&lt;String&gt;: open,
-      Array&lt;String&gt;: save,
-      Object formats: {
-        &quot;format-id&quot;: Object {
-          String name, 
-          String extension, 
-          String type,
-          String accept,
-          String encoding = &quot;text&quot;,
+    <span class="hljs-built_in">Object</span> file: {
+      <span class="hljs-built_in">String</span> <span class="hljs-keyword">new</span>,
+      <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">String</span>&gt;: open,
+      <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">String</span>&gt;: save,
+      <span class="hljs-built_in">Object</span> formats: {
+        <span class="hljs-string">"format-id"</span>: <span class="hljs-built_in">Object</span> {
+          <span class="hljs-built_in">String</span> name, 
+          <span class="hljs-built_in">String</span> extension, 
+          <span class="hljs-built_in">String</span> type,
+          <span class="hljs-built_in">String</span> accept,
+          <span class="hljs-built_in">String</span> encoding = <span class="hljs-string">"text"</span>,
         }
       }
     }
@@ -139,8 +109,13 @@
 <li><code>open</code> is an array of ids of the file formats that the app can open.</li>
 <li><code>save</code> is an array of ids of the file formats that the app can save.</li>
 </ul>
-<h3 id="file-formats-details">File formats details:</h3>
-<ul>
+
+      <h3>
+        <a name="file-formats-details" class="anchor" href="#file-formats-details">
+          <span class="header-link"></span>
+        </a>
+        File formats details:
+      </h3><ul>
 <li><code>name</code> - The human readable name of this file format.<ul>
 <li>Will be used for display in file dialogs and for naming new files.</li>
 </ul>
@@ -174,8 +149,13 @@
 </ul>
 </li>
 </ul>
-<h3 id="example">Example</h3>
-<pre><code class="language-json">{
+
+      <h3>
+        <a name="example" class="anchor" href="#example">
+          <span class="header-link"></span>
+        </a>
+        Example
+      </h3><pre><code class="language-json">{
   ...
   &quot;api&quot;: {
     &quot;file&quot;: {
@@ -194,8 +174,10 @@
   }
 }</code></pre>
 
-    </article>
-  </main>
+        </article>
+      </div>
+    </div>
+    <div>
 </body>
 
 </html>

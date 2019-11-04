@@ -2,195 +2,226 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
-    integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,400i,700,700i&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,500i,600,600i,700,700i&display=swap&subset=latin-ext">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/image.css"
+    integrity="sha256-F35NJZtdA4AJEz0RQVWT2C3xC1WHMf2Kv/ANYLx0q9w=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/_styles/github.css">
   <link rel="stylesheet" href="/_styles/styles.css">
+  
   </link>
   <title>fs-api</title>
 </head>
 
 <body>
-  <main>
-    <nav>
-      
-      
-      <a class="item" data-toc-depth="0"" data-toc-active="false"
-        href=" /">
-        WebShell Docs
-      </a >
-      
-      
-      <span class="item" data-toc-depth="1"" data-toc-active="false"
-        href=" /getting-started/">
-        Getting Started
-      </span >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /getting-started/sandbox">
-        Visit WebShell Sandbox
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /getting-started/template-repos">
-        App Template Repos
-      </a >
-      
-      
-      <span class="item" data-toc-depth="1"" data-toc-active="false"
-        href=" /api/">
-        App API Docs
-      </span >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /api/works-how">
-        How It Works
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /api/app-manifest">
-        App Manifest
-      </a >
-      
-      
-      <span class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /api/file/">
-        File API
-      </span >
-      
-      
-      <a class="item" data-toc-depth="3"" data-toc-active="false"
-        href=" /api/file/manifest">
-        Manifest
-      </a >
-      
-      
-      <a class="item" data-toc-depth="3"" data-toc-active="false"
-        href=" /api/file/commands">
-        Commands
-      </a >
-      
-      
-      <a class="item" data-toc-depth="1"" data-toc-active="false"
-        href=" /packages/">
-        Npm Packages
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /packages/web-shell-app">
-        web-shell-app
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /packages/remote-slave-port">
-        remote-slave-port
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /packages/remote-master-port">
-        remote-master-port
-      </a >
-      
-      
-      <a class="item" data-toc-depth="1"" data-toc-active="false"
-        href=" /about">
-        About
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /milestones">
-        Milestones
-      </a >
-      
-    </nav>
-    
-    <article class="markdown-body">
-      <h1>fs-api</h1>
-      
-      <h1 id="fs-api">FS API</h1>
-<h2 id="fs-volumes">FS Volumes</h2>
-<h3 id="fs-volume-mount">fs-volume-mount</h3>
-<p>Open a FS adapter in an iframe and connect it to the file system.</p>
-<pre><code class="language-js">Command &quot;fs-volume-mount&quot; { String url, HTMLIframeElement iframe } =&gt; { String vid }
+  <div id="canvas">
+    <header id="header">
 
-Error &quot;fs-volume-already-mounted&quot; { vid }</code></pre>
-<h3 id="fs-volume-umount">fs-volume-umount</h3>
-<p>Ask the FS volume to disconnect nicely. </p>
-<pre><code class="language-js">Command &quot;fs-volume-umount&quot; { String vid } =&gt; &quot;OK&quot;
+    </header>
+    <div id="main">
+        <div id="content">
+            <div id="pane">
+        <nav id="nav"><a class="item openable" data-nav-level="0" href=" /">
+            WebShell
+          </a><a class="item openable" data-nav-level="1" href=" /getting-started/">
+            Getting Started
+          </a><a class="item " data-nav-level="2" href=" /getting-started/sandbox">
+            Visit WebShell Sandbox
+          </a><a class="item " data-nav-level="2" href=" /getting-started/template-repos">
+            App Template Repos
+          </a><a class="item openable" data-nav-level="1" href=" /app-developer-guide/">
+            App Developer&#39;s Guide
+          </a><a class="item " data-nav-level="2" href=" /app-developer-guide/works-how">
+            How It Works
+          </a><a class="item openable" data-nav-level="2" href=" /tutorial/">
+            Tutorial
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step1">
+            Step 1 - Import the library
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step2">
+            Step 2 - App manifest
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step3">
+            Step 3 - See it in action
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step4">
+            Step 4 - Declare file operations
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step5">
+            Step 5 - Implement file operations
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step6">
+            Step 6 - Make and publish a real app
+          </a><a class="item openable" data-nav-level="1" href=" /api/">
+            Docs
+          </a><a class="item " data-nav-level="2" href=" /api/app-manifest">
+            App Manifest
+          </a><a class="item openable" data-nav-level="2" href=" /api/file/">
+            File API
+          </a><a class="item " data-nav-level="3" href=" /api/file/manifest">
+            Manifest
+          </a><a class="item " data-nav-level="3" href=" /api/file/commands">
+            Commands
+          </a><a class="item openable" data-nav-level="1" href=" /packages/">
+            Npm Packages
+          </a><a class="item " data-nav-level="2" href=" /packages/web-shell-app">
+            web-shell-app
+          </a><a class="item " data-nav-level="2" href=" /packages/remote-slave-port">
+            remote-slave-port
+          </a><a class="item " data-nav-level="2" href=" /packages/remote-master-port">
+            remote-master-port
+          </a><a class="item " data-nav-level="1" href=" /about">
+            About
+          </a></nav>
+      </div>
+      <aside><nav id="toc">
+          <a class="item" data-toc-level="1" href="##">
+            fs-api
+          </a><a class="item" data-toc-level="1""  href=" #fs-api">
+            FS API
+          </a><a class="item" data-toc-level="2""  href=" #fs-volumes">
+            FS Volumes
+          </a><a class="item" data-toc-level="3""  href=" #fs-volume-mount">
+            fs-volume-mount
+          </a><a class="item" data-toc-level="3""  href=" #fs-volume-umount">
+            fs-volume-umount
+          </a><a class="item" data-toc-level="3""  href=" #fs-volume-umount-force">
+            fs-volume-umount-force
+          </a><a class="item" data-toc-level="2""  href=" #fs-file-operations">
+            FS File Operations
+          </a><a class="item" data-toc-level="3""  href=" #fs-file-get">
+            fs-file-get
+          </a><a class="item" data-toc-level="3""  href=" #fs-file-create">
+            fs-file-create
+          </a><a class="item" data-toc-level="3""  href=" #fs-file-update">
+            fs-file-update
+          </a></nav></aside>
+        <article class="markdown-body">
+          <a name="#"></a><h1>
+            fs-api
+          </h1>
+      <h1>
+        <a name="fs-api" class="anchor" href="#fs-api">
+          <span class="header-link"></span>
+        </a>
+        FS API
+      </h1>
+      <h2>
+        <a name="fs-volumes" class="anchor" href="#fs-volumes">
+          <span class="header-link"></span>
+        </a>
+        FS Volumes
+      </h2>
+      <h3>
+        <a name="fs-volume-mount" class="anchor" href="#fs-volume-mount">
+          <span class="header-link"></span>
+        </a>
+        fs-volume-mount
+      </h3><p>Open a FS adapter in an iframe and connect it to the file system.</p>
+<pre><code class="language-js">Command <span class="hljs-string">"fs-volume-mount"</span> { <span class="hljs-built_in">String</span> url, HTMLIframeElement iframe } =&gt; { <span class="hljs-built_in">String</span> vid }
 
-Error &quot;fs-volume-not-mounted&quot; { vid }</code></pre>
-<h3 id="fs-volume-umount-force">fs-volume-umount-force</h3>
-<p>Force unload an app.</p>
-<pre><code class="language-js">Command &quot;fs-volume-umount-force&quot; { String appid } =&gt; &quot;OK&quot;
+<span class="hljs-built_in">Error</span> <span class="hljs-string">"fs-volume-already-mounted"</span> { vid }</code></pre>
 
-Error &quot;fs-volume-not-mounted&quot; { String appid }</code></pre>
-<h2 id="fs-file-operations">FS File Operations</h2>
-<blockquote>
+      <h3>
+        <a name="fs-volume-umount" class="anchor" href="#fs-volume-umount">
+          <span class="header-link"></span>
+        </a>
+        fs-volume-umount
+      </h3><p>Ask the FS volume to disconnect nicely. </p>
+<pre><code class="language-js">Command <span class="hljs-string">"fs-volume-umount"</span> { <span class="hljs-built_in">String</span> vid } =&gt; <span class="hljs-string">"OK"</span>
+
+<span class="hljs-built_in">Error</span> <span class="hljs-string">"fs-volume-not-mounted"</span> { vid }</code></pre>
+
+      <h3>
+        <a name="fs-volume-umount-force" class="anchor" href="#fs-volume-umount-force">
+          <span class="header-link"></span>
+        </a>
+        fs-volume-umount-force
+      </h3><p>Force unload an app.</p>
+<pre><code class="language-js">Command <span class="hljs-string">"fs-volume-umount-force"</span> { <span class="hljs-built_in">String</span> appid } =&gt; <span class="hljs-string">"OK"</span>
+
+<span class="hljs-built_in">Error</span> <span class="hljs-string">"fs-volume-not-mounted"</span> { <span class="hljs-built_in">String</span> appid }</code></pre>
+
+      <h2>
+        <a name="fs-file-operations" class="anchor" href="#fs-file-operations">
+          <span class="header-link"></span>
+        </a>
+        FS File Operations
+      </h2><blockquote>
 <p>File operations should probably support multiple encodings, to make it easier for UI developers. Recoding should be done in one place, either here or in the shell.</p>
 </blockquote>
 <blockquote>
 <p>There are currently no explicit operations for folders. <code>fs-file-get</code> can read folder contents. Anything that is a folder (i.e. can have children) should have its <code>.is.folder</code> set to <code>true</code>. </p>
 </blockquote>
-<h3 id="fs-file-get">fs-file-get</h3>
-<p>Get information for a path in the FS, possibly including the content.</p>
-<pre><code class="language-js">Command &quot;fs-file-get&quot; { 
-  String path, 
-  Object include: { 
-    Boolean parent, 
-    Boolean parents, 
-    Boolean children, 
-    Boolean content 
+
+      <h3>
+        <a name="fs-file-get" class="anchor" href="#fs-file-get">
+          <span class="header-link"></span>
+        </a>
+        fs-file-get
+      </h3><p>Get information for a path in the FS, possibly including the content.</p>
+<pre><code class="language-js">Command <span class="hljs-string">"fs-file-get"</span> { 
+  <span class="hljs-built_in">String</span> path, 
+  <span class="hljs-built_in">Object</span> include: { 
+    <span class="hljs-built_in">Boolean</span> parent, 
+    <span class="hljs-built_in">Boolean</span> parents, 
+    <span class="hljs-built_in">Boolean</span> children, 
+    <span class="hljs-built_in">Boolean</span> content 
   } =&gt; WebShellFile
 
-Error &quot;fs-not-found&quot; { String path }
-Error &quot;fs-access-denied&quot; { String path }</code></pre>
-<h3 id="fs-file-create">fs-file-create</h3>
-<p>Create a named file at a path in the FS.</p>
+<span class="hljs-built_in">Error</span> <span class="hljs-string">"fs-not-found"</span> { <span class="hljs-built_in">String</span> path }
+<span class="hljs-built_in">Error</span> <span class="hljs-string">"fs-access-denied"</span> { <span class="hljs-built_in">String</span> path }</code></pre>
+
+      <h3>
+        <a name="fs-file-create" class="anchor" href="#fs-file-create">
+          <span class="header-link"></span>
+        </a>
+        fs-file-create
+      </h3><p>Create a named file at a path in the FS.</p>
 <blockquote>
 <p>Should this create folders if type is <code>folder/directory</code>? Are directories the only kind of folder that we might want to create? </p>
 </blockquote>
-<pre><code class="language-js">Command &quot;fs-file-create&quot; { 
-  String parentpath, 
-  String name,
-  String type,
-  ArrayBuffer content,
-  Object include: { 
-    Boolean parent, 
-    Boolean parents, 
-    Boolean children, 
-    Boolean content 
+<pre><code class="language-js">Command <span class="hljs-string">"fs-file-create"</span> { 
+  <span class="hljs-built_in">String</span> parentpath, 
+  <span class="hljs-built_in">String</span> name,
+  <span class="hljs-built_in">String</span> type,
+  <span class="hljs-built_in">ArrayBuffer</span> content,
+  <span class="hljs-built_in">Object</span> include: { 
+    <span class="hljs-built_in">Boolean</span> parent, 
+    <span class="hljs-built_in">Boolean</span> parents, 
+    <span class="hljs-built_in">Boolean</span> children, 
+    <span class="hljs-built_in">Boolean</span> content 
   } =&gt; WebShellFile
 
-Error &quot;fs-not-found&quot; { String path }
-Error &quot;fs-access-denied&quot; { String path }</code></pre>
-<h3 id="fs-file-update">fs-file-update</h3>
-<p>Update the content of a file at a path in the FS.</p>
+<span class="hljs-built_in">Error</span> <span class="hljs-string">"fs-not-found"</span> { <span class="hljs-built_in">String</span> path }
+<span class="hljs-built_in">Error</span> <span class="hljs-string">"fs-access-denied"</span> { <span class="hljs-built_in">String</span> path }</code></pre>
+
+      <h3>
+        <a name="fs-file-update" class="anchor" href="#fs-file-update">
+          <span class="header-link"></span>
+        </a>
+        fs-file-update
+      </h3><p>Update the content of a file at a path in the FS.</p>
 <blockquote>
 <p>Should this also update file names, i.e. rename files? Should it update the file parent, i.e. move files?</p>
 </blockquote>
-<pre><code class="language-js">Command &quot;fs-file-update&quot; { 
-  String path, 
-  String type,
-  ArrayBuffer content,
-  Object include: { 
-    Boolean parent, 
-    Boolean parents, 
-    Boolean children, 
-    Boolean content 
+<pre><code class="language-js">Command <span class="hljs-string">"fs-file-update"</span> { 
+  <span class="hljs-built_in">String</span> path, 
+  <span class="hljs-built_in">String</span> type,
+  <span class="hljs-built_in">ArrayBuffer</span> content,
+  <span class="hljs-built_in">Object</span> include: { 
+    <span class="hljs-built_in">Boolean</span> parent, 
+    <span class="hljs-built_in">Boolean</span> parents, 
+    <span class="hljs-built_in">Boolean</span> children, 
+    <span class="hljs-built_in">Boolean</span> content 
   } =&gt; WebShellFile
 
-Error &quot;fs-not-found&quot; { String path }
-Error &quot;fs-access-denied&quot; { String path }</code></pre>
+<span class="hljs-built_in">Error</span> <span class="hljs-string">"fs-not-found"</span> { <span class="hljs-built_in">String</span> path }
+<span class="hljs-built_in">Error</span> <span class="hljs-string">"fs-access-denied"</span> { <span class="hljs-built_in">String</span> path }</code></pre>
 
-    </article>
-  </main>
+        </article>
+      </div>
+    </div>
+    <div>
 </body>
 
 </html>

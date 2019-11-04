@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,400i,700,700i&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,500i,600,600i,700,700i&display=swap&subset=latin-ext">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/image.css"
+    integrity="sha256-F35NJZtdA4AJEz0RQVWT2C3xC1WHMf2Kv/ANYLx0q9w=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/_styles/github.css">
+  <link rel="stylesheet" href="/_styles/styles.css">
+  
+  </link>
+  <title>How It Works</title>
+</head>
+
+<body>
+  <div id="canvas">
+    <header id="header">
+
+    </header>
+    <div id="main">
+        <div id="content">
+            <div id="pane">
+        <nav id="nav"><a class="item openable open visible" data-nav-level="0" href=" /">
+            WebShell
+          </a><a class="item openable visible" data-nav-level="1" href=" /getting-started/">
+            Getting Started
+          </a><a class="item " data-nav-level="2" href=" /getting-started/sandbox">
+            Visit WebShell Sandbox
+          </a><a class="item " data-nav-level="2" href=" /getting-started/template-repos">
+            App Template Repos
+          </a><a class="item openable open visible" data-nav-level="1" href=" /app-developer-guide/">
+            App Developer&#39;s Guide
+          </a><a class="item open visible active" data-nav-level="2" href=" /app-developer-guide/works-how">
+            How It Works
+          </a><a class="item openable visible" data-nav-level="2" href=" /tutorial/">
+            Tutorial
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step1">
+            Step 1 - Import the library
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step2">
+            Step 2 - App manifest
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step3">
+            Step 3 - See it in action
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step4">
+            Step 4 - Declare file operations
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step5">
+            Step 5 - Implement file operations
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step6">
+            Step 6 - Make and publish a real app
+          </a><a class="item openable visible" data-nav-level="1" href=" /api/">
+            Docs
+          </a><a class="item " data-nav-level="2" href=" /api/app-manifest">
+            App Manifest
+          </a><a class="item openable" data-nav-level="2" href=" /api/file/">
+            File API
+          </a><a class="item " data-nav-level="3" href=" /api/file/manifest">
+            Manifest
+          </a><a class="item " data-nav-level="3" href=" /api/file/commands">
+            Commands
+          </a><a class="item openable visible" data-nav-level="1" href=" /packages/">
+            Npm Packages
+          </a><a class="item " data-nav-level="2" href=" /packages/web-shell-app">
+            web-shell-app
+          </a><a class="item " data-nav-level="2" href=" /packages/remote-slave-port">
+            remote-slave-port
+          </a><a class="item " data-nav-level="2" href=" /packages/remote-master-port">
+            remote-master-port
+          </a><a class="item visible" data-nav-level="1" href=" /about">
+            About
+          </a></nav>
+      </div>
+      <aside><nav id="toc">
+          <a class="item" data-toc-level="1" href="##">
+            How It Works
+          </a><a class="item" data-toc-level="2""  href=" #commands">
+            Commands
+          </a><a class="item" data-toc-level="2""  href=" #errors">
+            Errors
+          </a></nav></aside>
+        <article class="markdown-body">
+          <a name="#"></a><h1>
+            How It Works
+          </h1><p>Apps are loaded in sandboxed iframes inside the WebShell window. Once the app is loaded, it connects to WebShell through an async-enabled
+messaging channel. The app side of the connection is managed by the <code>WebShellApp</code> object from the <code>@websh/web-shell-app</code> package.</p>
+<blockquote>
+<p>The App will be loaded in a sandboxed iframe, with only <code>allow-scripts</code> set. </p>
+<p>We specifically exclude <code>allow-same-origin</code>. This allows us to securely load apps from anywhere, without worrying about cross-frame security issues. It also means no cookies, as well as no localStorage, sessionStorage etc.</p>
+<p>At this point, the only defined App API is the File API, which means that WebShell apps are at most single document editors. 
+Security restrictions are therefore only relaxed as much as is necessary for that particular use case.</p>
+<p>The app must be a single-page app. Window navigation is not allowed. If its iframe receives a second <code>load</code> event, the app will be unloaded.</p>
+</blockquote>
+<p>On connection (immediately after the app is loaded), the app sends  to the shell its manifest, which consists of various meta data about the app and the description of its capabilities according to this API. Use <code>WebShellApp.manifest</code> in the app to specify the app&#39;s manifest.</p>
+<p>After connection, the app receives commands from the shell, which it executes and returns the resuls, or throws an error. The result or the error is then transmitted back to the shell. Use <code>WebShellApp.command</code> in the app to register command handlers.</p>
+<p>The app can also send events to the shell. Use <code>WebShellApp.trigger</code> in the app to send an event.</p>
+<p>Commands, expected results, errors and events are defined in various app APIs. </p>
+
+      <h2>
+        <a name="commands" class="anchor" href="#commands">
+          <span class="header-link"></span>
+        </a>
+        Commands
+      </h2><p>Commands are sent from the shell to the app. To register a command handler in the app, use e.g.</p>
+<pre><code class="language-js">WebShellApp.command(<span class="hljs-string">'test-echo'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">{ text }</span>) </span>{
+  <span class="hljs-keyword">if</span> (text === <span class="hljs-literal">undefined</span>) {
+    WebShellApp.throw(<span class="hljs-string">"command-bad-arguments"</span>,{ <span class="hljs-attr">reason</span>: <span class="hljs-string">"must supply text"</span> });
+  }
+  <span class="hljs-keyword">return</span> { text }
+})</code></pre>
+<p>Handler functions should return the results as described in each app API. If an error occurrs and the result can not be returned, an error should be thrown. Errors should be thrown using <code>WebShellApp.throw</code>:</p>
+<pre><code class="language-js">WebShellApp.throw(error,data);</code></pre>
+
+      <h2>
+        <a name="errors" class="anchor" href="#errors">
+          <span class="header-link"></span>
+        </a>
+        Errors
+      </h2><p>Errors are described in each app API. In addition to those errors, the following may be thrown if no specific error applies.</p>
+<pre><code class="language-js"><span class="hljs-built_in">Error</span> <span class="hljs-string">"command-not-allowed"</span> { <span class="hljs-built_in">String</span> reason }
+<span class="hljs-built_in">Error</span> <span class="hljs-string">"command-failed"</span> { <span class="hljs-built_in">String</span> reason }
+<span class="hljs-built_in">Error</span> <span class="hljs-string">"command-internal-error"</span> { <span class="hljs-built_in">String</span> reason }</code></pre>
+
+        </article>
+      </div>
+    </div>
+    <div>
+</body>
+
+</html>

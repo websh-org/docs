@@ -6,9 +6,11 @@
   "directories": {
     "doc": "docs"
   },
+  "type": "module",
   "scripts": {
-    "build": "node --experimental-modules bundler/build.js",
-    "serve": "node --experimental-modules bundler/serve.js",
+    "build": "NODE_ENV=production node --experimental-modules bundler/build.js",
+    "serve": "cd docs; http-server -c0 .",
+    "watch": "node --experimental-modules bundler/serve.js",
     "dev": "cd bundler; nodemon --experimental-modules serve.js"
   },
   "author": "",

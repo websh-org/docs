@@ -1,5 +1,5 @@
 ----
-title: Docs
+title: App API Docs
 nav: 
   link: true
   children:

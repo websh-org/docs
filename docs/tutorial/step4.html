@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,400i,700,700i&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,500i,600,600i,700,700i&display=swap&subset=latin-ext">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/image.css"
+    integrity="sha256-F35NJZtdA4AJEz0RQVWT2C3xC1WHMf2Kv/ANYLx0q9w=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/_styles/github.css">
+  <link rel="stylesheet" href="/_styles/styles.css">
+  
+  </link>
+  <title>Step 4 - Declare file operations</title>
+</head>
+
+<body>
+  <div id="canvas">
+    <header id="header">
+
+    </header>
+    <div id="main">
+        <div id="content">
+            <div id="pane">
+        <nav id="nav"><a class="item openable open visible" data-nav-level="0" href=" /">
+            WebShell
+          </a><a class="item openable visible" data-nav-level="1" href=" /getting-started/">
+            Getting Started
+          </a><a class="item " data-nav-level="2" href=" /getting-started/sandbox">
+            Visit WebShell Sandbox
+          </a><a class="item " data-nav-level="2" href=" /getting-started/template-repos">
+            App Template Repos
+          </a><a class="item openable open visible" data-nav-level="1" href=" /app-developer-guide/">
+            App Developer&#39;s Guide
+          </a><a class="item visible" data-nav-level="2" href=" /app-developer-guide/works-how">
+            How It Works
+          </a><a class="item openable open visible" data-nav-level="2" href=" /tutorial/">
+            Tutorial
+          </a><a class="item visible" data-nav-level="3" href=" /tutorial/step1">
+            Step 1 - Import the library
+          </a><a class="item visible" data-nav-level="3" href=" /tutorial/step2">
+            Step 2 - App manifest
+          </a><a class="item visible" data-nav-level="3" href=" /tutorial/step3">
+            Step 3 - See it in action
+          </a><a class="item open visible active" data-nav-level="3" href=" /tutorial/step4">
+            Step 4 - Declare file operations
+          </a><a class="item visible" data-nav-level="3" href=" /tutorial/step5">
+            Step 5 - Implement file operations
+          </a><a class="item visible" data-nav-level="3" href=" /tutorial/step6">
+            Step 6 - Make and publish a real app
+          </a><a class="item openable visible" data-nav-level="1" href=" /api/">
+            Docs
+          </a><a class="item " data-nav-level="2" href=" /api/app-manifest">
+            App Manifest
+          </a><a class="item openable" data-nav-level="2" href=" /api/file/">
+            File API
+          </a><a class="item " data-nav-level="3" href=" /api/file/manifest">
+            Manifest
+          </a><a class="item " data-nav-level="3" href=" /api/file/commands">
+            Commands
+          </a><a class="item openable visible" data-nav-level="1" href=" /packages/">
+            Npm Packages
+          </a><a class="item " data-nav-level="2" href=" /packages/web-shell-app">
+            web-shell-app
+          </a><a class="item " data-nav-level="2" href=" /packages/remote-slave-port">
+            remote-slave-port
+          </a><a class="item " data-nav-level="2" href=" /packages/remote-master-port">
+            remote-master-port
+          </a><a class="item visible" data-nav-level="1" href=" /about">
+            About
+          </a></nav>
+      </div>
+      <aside></aside>
+        <article class="markdown-body">
+          <a name="#"></a><h1>
+            Step 4 - Declare file operations
+          </h1><p>To allow the user to use file operations, we need to tell WebShell that our app implements the File API, and describe the file formats that we can open and save. </p>
+<p>Insert the following into the app manifest:</p>
+<pre><code class="language-js">  api: {
+    <span class="hljs-attr">file</span>: {
+      <span class="hljs-attr">formats</span>: {
+        <span class="hljs-attr">text</span>: {
+          <span class="hljs-attr">name</span>: <span class="hljs-string">"Text File"</span>,
+          <span class="hljs-attr">type</span>: <span class="hljs-string">"text/plain"</span>,
+          <span class="hljs-attr">extension</span>: <span class="hljs-string">"txt"</span>
+        },
+      },
+      <span class="hljs-attr">save</span>: [<span class="hljs-string">"text"</span>],
+      <span class="hljs-attr">open</span>: [<span class="hljs-string">"text"</span>],
+      <span class="hljs-attr">new</span>: <span class="hljs-string">"text"</span>,
+    }
+  }</code></pre>
+<p>In short, we know one format, the humble Text File, we create it when the user clicks the <strong>New</strong> button, and it&#39;s among the formats
+(i.e. is the only format) we can open and save. This is enough for the file toolbar buttons to appear, but we still need to implement
+the file operations inside the app.</p>
+<p>On to <a href="step5">step 5</a>!</p>
+<details><summary><code>index.html</code></summary>
+
+<pre><code class="language-html"><span class="hljs-meta">&lt;!doctype html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- include the WebShellApp libray --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/@websh/web-shell-app/dist/web-shell-app.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- this is where we will put our UI --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+      WebShellApp.manifest({
+        v: <span class="hljs-number">0</span> <span class="hljs-comment">// must be 0 for now,</span>
+        name: <span class="hljs-string">"My First App"</span>,
+        icon: <span class="hljs-string">"icon.png"</span>, 
+        short_name: <span class="hljs-string">"MyApp"</span>,  <span class="hljs-comment">// This is optional</span>
+        description: <span class="hljs-string">"This is my first WebShell app."</span>,
+        license: <span class="hljs-string">"ISC"</span>,
+        api: {
+          file: {
+            formats: {
+              text: { name: <span class="hljs-string">"Text File"</span>, type: <span class="hljs-string">"text/plain"</span>, extension: <span class="hljs-string">"txt"</span> }
+            },
+            save: [<span class="hljs-string">"text"</span>],
+            open: [<span class="hljs-string">"text"</span>],
+            <span class="hljs-keyword">new</span>: <span class="hljs-string">"text"</span>,
+          }
+        }
+      })
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+</details>
+        </article>
+      </div>
+    </div>
+    <div>
+</body>
+
+</html>

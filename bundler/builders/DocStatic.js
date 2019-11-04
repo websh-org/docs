@@ -1,3 +1,4 @@
+import { promises as fs } from "fs";
 import { DocFile } from "./DocFile.js";
 
 export class DocStatic extends DocFile {

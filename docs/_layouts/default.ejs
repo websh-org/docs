@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 
@@ -38,22 +36,52 @@
 
     </header>
     <div id="main">
-      <div id="content">
-        <div id="pane">
-          <nav id="nav">
-            <%- include("nav.ejs",{page,site}) %>
-          </nav>
-        </div>
-        <aside><% 
+        <div id="content">
+            <div id="pane">
+        <nav id="nav"><% 
+      console.log(page.parents)
+
+      const visibleLinks = {[page.path]:true};
+      const openLinks = {[page.path]:true};
+      const openableLinks = {};
+
+      for (const p of site.nav) { 
+        if (p.file.parent) openableLinks[p.file.parent] = true;
+        if (page.parents.includes(p.path)) {
+          openLinks[p.path] = visibleLinks[p.path] = true;
+        }
+      }
+      if (openableLinks[page.path]) openLinks[page.path] = true;
+      for (const p of site.nav) { 
+        if (openLinks[p.file.parent]) {
+          visibleLinks[p.path] = true;
+        }
+      }
+      
+      for (const p of site.nav) { 
+        const classes = [
+          openableLinks[p.path] && "openable",
+          openLinks[p.path] && "open",
+          visibleLinks[p.path] && "visible",
+          page.path === p.path && "active"
+        ].filter(Boolean).join(" ");
+        %><a class="item <%- classes %>" data-nav-level="<%= p.level %>" href=" <%= p.path %>">
+            <%= p.title %>
+          </a><%
+      } 
+
+    %></nav>
+      </div>
+      <aside><% 
         if (page.toc && page.toc.length) { 
           %><nav id="toc">
-            <a class="item" data-toc-level="1" href="##">
-              <%- page.title %>
-            </a><% 
+          <a class="item" data-toc-level="1" href="##">
+            <%- page.title %>
+          </a><% 
           for (const p of page.toc) { 
             %><a class="item" data-toc-level="<%= p.level %>""  href=" #<%= p.slug %>">
-              <%- p.text %>
-            </a><% 
+            <%- p.text %>
+          </a><% 
           } 
           %></nav><%
         } 
@@ -66,12 +94,12 @@
             <%= page.title %>
           </h1><%
       } 
-      %>
-      <%- content %>
-      </article>
+
+      %><%- content %>
+        </article>
+      </div>
     </div>
-  </div>
-  <div>
+    <div>
 </body>
 
 </html>

@@ -2,139 +2,148 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
-    integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,400i,700,700i&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,500i,600,600i,700,700i&display=swap&subset=latin-ext">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/image.css"
+    integrity="sha256-F35NJZtdA4AJEz0RQVWT2C3xC1WHMf2Kv/ANYLx0q9w=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/_styles/github.css">
   <link rel="stylesheet" href="/_styles/styles.css">
+  
   </link>
   <title>File API</title>
 </head>
 
 <body>
-  <main>
-    <nav>
-      
-      
-      <a class="item" data-toc-depth="0"" data-toc-active="false"
-        href=" /">
-        WebShell Docs
-      </a >
-      
-      
-      <span class="item" data-toc-depth="1"" data-toc-active="false"
-        href=" /getting-started/">
-        Getting Started
-      </span >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /getting-started/sandbox">
-        Visit WebShell Sandbox
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /getting-started/template-repos">
-        App Template Repos
-      </a >
-      
-      
-      <span class="item" data-toc-depth="1"" data-toc-active="false"
-        href=" /api/">
-        App API Docs
-      </span >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /api/works-how">
-        How It Works
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /api/app-manifest">
-        App Manifest
-      </a >
-      
-      
-      <span class="item" data-toc-depth="2"" data-toc-active="true"
-        href=" /api/file/">
-        File API
-      </span >
-      
-      
-      <a class="item" data-toc-depth="3"" data-toc-active="false"
-        href=" /api/file/manifest">
-        Manifest
-      </a >
-      
-      
-      <a class="item" data-toc-depth="3"" data-toc-active="false"
-        href=" /api/file/commands">
-        Commands
-      </a >
-      
-      
-      <a class="item" data-toc-depth="1"" data-toc-active="false"
-        href=" /packages/">
-        Npm Packages
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /packages/web-shell-app">
-        web-shell-app
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /packages/remote-slave-port">
-        remote-slave-port
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /packages/remote-master-port">
-        remote-master-port
-      </a >
-      
-      
-      <a class="item" data-toc-depth="1"" data-toc-active="false"
-        href=" /about">
-        About
-      </a >
-      
-      
-      <a class="item" data-toc-depth="2"" data-toc-active="false"
-        href=" /milestones">
-        Milestones
-      </a >
-      
-    </nav>
-    
-    <article class="markdown-body">
-      <h1>File API</h1>
-      
-      <p>Supports file operations in WebShell apps.</p>
+  <div id="canvas">
+    <header id="header">
+
+    </header>
+    <div id="main">
+        <div id="content">
+            <div id="pane">
+        <nav id="nav"><a class="item openable open visible" data-nav-level="0" href=" /">
+            WebShell
+          </a><a class="item openable visible" data-nav-level="1" href=" /getting-started/">
+            Getting Started
+          </a><a class="item " data-nav-level="2" href=" /getting-started/sandbox">
+            Visit WebShell Sandbox
+          </a><a class="item " data-nav-level="2" href=" /getting-started/template-repos">
+            App Template Repos
+          </a><a class="item openable visible" data-nav-level="1" href=" /app-developer-guide/">
+            App Developer&#39;s Guide
+          </a><a class="item " data-nav-level="2" href=" /app-developer-guide/works-how">
+            How It Works
+          </a><a class="item openable" data-nav-level="2" href=" /tutorial/">
+            Tutorial
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step1">
+            Step 1 - Import the library
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step2">
+            Step 2 - App manifest
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step3">
+            Step 3 - See it in action
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step4">
+            Step 4 - Declare file operations
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step5">
+            Step 5 - Implement file operations
+          </a><a class="item " data-nav-level="3" href=" /tutorial/step6">
+            Step 6 - Make and publish a real app
+          </a><a class="item openable open visible" data-nav-level="1" href=" /api/">
+            Docs
+          </a><a class="item visible" data-nav-level="2" href=" /api/app-manifest">
+            App Manifest
+          </a><a class="item openable open visible active" data-nav-level="2" href=" /api/file/">
+            File API
+          </a><a class="item visible" data-nav-level="3" href=" /api/file/manifest">
+            Manifest
+          </a><a class="item visible" data-nav-level="3" href=" /api/file/commands">
+            Commands
+          </a><a class="item openable visible" data-nav-level="1" href=" /packages/">
+            Npm Packages
+          </a><a class="item " data-nav-level="2" href=" /packages/web-shell-app">
+            web-shell-app
+          </a><a class="item " data-nav-level="2" href=" /packages/remote-slave-port">
+            remote-slave-port
+          </a><a class="item " data-nav-level="2" href=" /packages/remote-master-port">
+            remote-master-port
+          </a><a class="item visible" data-nav-level="1" href=" /about">
+            About
+          </a></nav>
+      </div>
+      <aside><nav id="toc">
+          <a class="item" data-toc-level="1" href="##">
+            File API
+          </a><a class="item" data-toc-level="2""  href=" #api-manifest">
+            API Manifest
+          </a><a class="item" data-toc-level="3""  href=" #file-formats-details">
+            File formats details:
+          </a><a class="item" data-toc-level="3""  href=" #example">
+            Example
+          </a><a class="item" data-toc-level="2""  href=" #commands">
+            Commands
+          </a><a class="item" data-toc-level="3""  href=" #file-new">
+            file-new
+          </a><a class="item" data-toc-level="4""  href=" #synopsys">
+            Synopsys
+          </a><a class="item" data-toc-level="4""  href=" #example-1">
+            Example
+          </a><a class="item" data-toc-level="4""  href=" #workflow">
+            Workflow
+          </a><a class="item" data-toc-level="3""  href=" #file-open">
+            file-open
+          </a><a class="item" data-toc-level="4""  href=" #synopsis">
+            Synopsis
+          </a><a class="item" data-toc-level="4""  href=" #errors">
+            Errors
+          </a><a class="item" data-toc-level="4""  href=" #example-2">
+            Example
+          </a><a class="item" data-toc-level="4""  href=" #workflow-1">
+            Workflow
+          </a><a class="item" data-toc-level="3""  href=" #file-save">
+            file-save
+          </a><a class="item" data-toc-level="4""  href=" #synopsis-1">
+            Synopsis
+          </a><a class="item" data-toc-level="4""  href=" #example-3">
+            Example
+          </a><a class="item" data-toc-level="4""  href=" #workflow-2">
+            Workflow
+          </a><a class="item" data-toc-level="5""  href=" #save">
+            Save
+          </a><a class="item" data-toc-level="5""  href=" #save-as">
+            Save As
+          </a></nav></aside>
+        <article class="markdown-body">
+          <a name="#"></a><h1>
+            File API
+          </h1><p>Supports file operations in WebShell apps.</p>
 <ul>
 <li><em>format</em> is a file format described in the app manifest.</li>
 <li><em>document</em> is the current state of the app that can be opened or saved to a file.</li>
 <li><em>current file</em> is the file that was opened or created by the app. This is tracked by WebShell, not the app.</li>
 </ul>
-<h2 id="api-manifest">API Manifest</h2>
-<pre><code class="language-js">{
+
+      <h2>
+        <a name="api-manifest" class="anchor" href="#api-manifest">
+          <span class="header-link"></span>
+        </a>
+        API Manifest
+      </h2><pre><code class="language-js">{
   ...
   api: {
-    Object file: {
-      String new,
-      Array&lt;String&gt;: open,
-      Array&lt;String&gt;: save,
-      Object formats: {
-        &quot;format-id&quot;: Object {
-          String name, 
-          String extension, 
-          String type,
-          String accept,
-          String encoding = &quot;text&quot;,
+    <span class="hljs-built_in">Object</span> file: {
+      <span class="hljs-built_in">String</span> <span class="hljs-keyword">new</span>,
+      <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">String</span>&gt;: open,
+      <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">String</span>&gt;: save,
+      <span class="hljs-built_in">Object</span> formats: {
+        <span class="hljs-string">"format-id"</span>: <span class="hljs-built_in">Object</span> {
+          <span class="hljs-built_in">String</span> name, 
+          <span class="hljs-built_in">String</span> extension, 
+          <span class="hljs-built_in">String</span> type,
+          <span class="hljs-built_in">String</span> accept,
+          <span class="hljs-built_in">String</span> encoding = <span class="hljs-string">"text"</span>,
         }
       }
     }
@@ -145,8 +154,13 @@
 <li><code>open</code> is an array of ids of the file formats that the app can open.</li>
 <li><code>save</code> is an array of ids of the file formats that the app can save.</li>
 </ul>
-<h3 id="file-formats-details">File formats details:</h3>
-<ul>
+
+      <h3>
+        <a name="file-formats-details" class="anchor" href="#file-formats-details">
+          <span class="header-link"></span>
+        </a>
+        File formats details:
+      </h3><ul>
 <li><code>name</code> - The human readable name of this file format.<ul>
 <li>Will be used for display in file dialogs and for naming new files.</li>
 </ul>
@@ -180,8 +194,13 @@
 </ul>
 </li>
 </ul>
-<h3 id="example">Example</h3>
-<pre><code class="language-json">{
+
+      <h3>
+        <a name="example" class="anchor" href="#example">
+          <span class="header-link"></span>
+        </a>
+        Example
+      </h3><pre><code class="language-json">{
   ...
   &quot;api&quot;: {
     &quot;file&quot;: {
@@ -199,18 +218,43 @@
     }
   }
 }</code></pre>
-<h2 id="commands">Commands</h2>
-<h3 id="file-new">file-new</h3>
-<p>Create an empty document.</p>
-<h4 id="synopsys">Synopsys</h4>
-<pre><code class="language-js">Command &quot;file-new&quot; {} =&gt; true</code></pre>
-<h4 id="example-1">Example</h4>
-<pre><code class="language-js">WebShellApp.command( &quot;file-new&quot;, async function () { 
-  await myEditor.emptyContent();
-  return true;
+
+      <h2>
+        <a name="commands" class="anchor" href="#commands">
+          <span class="header-link"></span>
+        </a>
+        Commands
+      </h2>
+      <h3>
+        <a name="file-new" class="anchor" href="#file-new">
+          <span class="header-link"></span>
+        </a>
+        file-new
+      </h3><p>Create an empty document.</p>
+
+      <h4>
+        <a name="synopsys" class="anchor" href="#synopsys">
+          <span class="header-link"></span>
+        </a>
+        Synopsys
+      </h4><pre><code class="language-js">Command <span class="hljs-string">"file-new"</span> {} =&gt; <span class="hljs-literal">true</span></code></pre>
+
+      <h4>
+        <a name="example-1" class="anchor" href="#example-1">
+          <span class="header-link"></span>
+        </a>
+        Example
+      </h4><pre><code class="language-js">WebShellApp.command( <span class="hljs-string">"file-new"</span>, <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ 
+  <span class="hljs-keyword">await</span> myEditor.emptyContent();
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
 })</code></pre>
-<h4 id="workflow">Workflow</h4>
-<ol>
+
+      <h4>
+        <a name="workflow" class="anchor" href="#workflow">
+          <span class="header-link"></span>
+        </a>
+        Workflow
+      </h4><ol>
 <li>The user clicks the <strong>File &gt; New</strong> button</li>
 <li>WebShell sends the command to the app</li>
 <li>The app creates a new empty document</li>
@@ -220,26 +264,51 @@
 </blockquote>
 </li>
 </ol>
-<h3 id="file-open">file-open</h3>
-<p>The app receives the content of the file to be opened, as well as its extension and the ID of its format (this will be one of the formats specified in the app&#39;s manifest). The type of <code>content</code> depends on the encoding specified in the format.</p>
-<h4 id="synopsis">Synopsis</h4>
-<pre><code class="language-js">Command &quot;file-open&quot; { String extension, String format, Varying content } =&gt; true</code></pre>
-<h4 id="errors">Errors</h4>
-<pre><code class="language-js">Error &quot;file-cannot-open&quot; { String reason }</code></pre>
+
+      <h3>
+        <a name="file-open" class="anchor" href="#file-open">
+          <span class="header-link"></span>
+        </a>
+        file-open
+      </h3><p>The app receives the content of the file to be opened, as well as its extension and the ID of its format (this will be one of the formats specified in the app&#39;s manifest). The type of <code>content</code> depends on the encoding specified in the format.</p>
+
+      <h4>
+        <a name="synopsis" class="anchor" href="#synopsis">
+          <span class="header-link"></span>
+        </a>
+        Synopsis
+      </h4><pre><code class="language-js">Command <span class="hljs-string">"file-open"</span> { <span class="hljs-built_in">String</span> extension, <span class="hljs-built_in">String</span> format, Varying content } =&gt; <span class="hljs-literal">true</span></code></pre>
+
+      <h4>
+        <a name="errors" class="anchor" href="#errors">
+          <span class="header-link"></span>
+        </a>
+        Errors
+      </h4><pre><code class="language-js"><span class="hljs-built_in">Error</span> <span class="hljs-string">"file-cannot-open"</span> { <span class="hljs-built_in">String</span> reason }</code></pre>
 <p>Throw if the received content does not match the supplied expected format.</p>
-<h4 id="example-2">Example</h4>
-<pre><code class="language-js">WebShellApp.command(&quot;file-open&quot;, async function ({format, content, extension}) { 
-  try {
-    await myEditor.setContent(content);
-  } catch (error) {
-    this.throw(&quot;file-cannot-open&quot;, { 
-      reason: String(error) 
+
+      <h4>
+        <a name="example-2" class="anchor" href="#example-2">
+          <span class="header-link"></span>
+        </a>
+        Example
+      </h4><pre><code class="language-js">WebShellApp.command(<span class="hljs-string">"file-open"</span>, <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">{format, content, extension}</span>) </span>{ 
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">await</span> myEditor.setContent(content);
+  } <span class="hljs-keyword">catch</span> (error) {
+    <span class="hljs-keyword">this</span>.throw(<span class="hljs-string">"file-cannot-open"</span>, { 
+      <span class="hljs-attr">reason</span>: <span class="hljs-built_in">String</span>(error) 
     })
   }
-  return true;
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
 })</code></pre>
-<h4 id="workflow-1">Workflow</h4>
-<ol>
+
+      <h4>
+        <a name="workflow-1" class="anchor" href="#workflow-1">
+          <span class="header-link"></span>
+        </a>
+        Workflow
+      </h4><ol>
 <li>The user clicks the <strong>File &gt; Open</strong> button</li>
 <li>WebShell displays the <strong>File Open</strong> dialog to allow the user tp choose a file.</li>
 <li>WebShell sends the command to the app</li>
@@ -250,32 +319,62 @@
 </li>
 <li>WebShell sets the current file to the opened file</li>
 </ol>
-<h3 id="file-save">file-save</h3>
-<p>The app receives the format and the extension of the file that is to be saved, and returns the content of the file that will be saved. The expected type of <code>content</code> depends on the encoding specified in the manifest. The default mime type specified in the format in the manifest will be used for the saved file.</p>
-<h4 id="synopsis-1">Synopsis</h4>
-<pre><code class="language-js">Command &quot;file-save&quot; { String extension,  String format } =&gt; { content }</code></pre>
-<h4 id="example-3">Example</h4>
-<pre><code class="language-js">WebShellApp.command(&quot;file-open&quot;, async function ({format, extension}) { 
-  switch (format) {
-    case &quot;text&quot;: return ({ 
-      content: await myEditor.getText() 
+
+      <h3>
+        <a name="file-save" class="anchor" href="#file-save">
+          <span class="header-link"></span>
+        </a>
+        file-save
+      </h3><p>The app receives the format and the extension of the file that is to be saved, and returns the content of the file that will be saved. The expected type of <code>content</code> depends on the encoding specified in the manifest. The default mime type specified in the format in the manifest will be used for the saved file.</p>
+
+      <h4>
+        <a name="synopsis-1" class="anchor" href="#synopsis-1">
+          <span class="header-link"></span>
+        </a>
+        Synopsis
+      </h4><pre><code class="language-js">Command <span class="hljs-string">"file-save"</span> { <span class="hljs-built_in">String</span> extension,  <span class="hljs-built_in">String</span> format } =&gt; { content }</code></pre>
+
+      <h4>
+        <a name="example-3" class="anchor" href="#example-3">
+          <span class="header-link"></span>
+        </a>
+        Example
+      </h4><pre><code class="language-js">WebShellApp.command(<span class="hljs-string">"file-open"</span>, <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">{format, extension}</span>) </span>{ 
+  <span class="hljs-keyword">switch</span> (format) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"text"</span>: <span class="hljs-keyword">return</span> ({ 
+      <span class="hljs-attr">content</span>: <span class="hljs-keyword">await</span> myEditor.getText() 
     })
-    case &quot;myFormat&quot;: return ({ 
-      content: await myEditor.getContent() 
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"myFormat"</span>: <span class="hljs-keyword">return</span> ({ 
+      <span class="hljs-attr">content</span>: <span class="hljs-keyword">await</span> myEditor.getContent() 
     })
   }
 })</code></pre>
-<h4 id="workflow-2">Workflow</h4>
-<h5 id="save">Save</h5>
-<ol>
+
+      <h4>
+        <a name="workflow-2" class="anchor" href="#workflow-2">
+          <span class="header-link"></span>
+        </a>
+        Workflow
+      </h4>
+      <h5>
+        <a name="save" class="anchor" href="#save">
+          <span class="header-link"></span>
+        </a>
+        Save
+      </h5><ol>
 <li>The user clicks the <strong>File &gt; Save</strong></li>
 <li>WebShell sends the command to the app, with <code>format</code> and <code>extension</code> set according to the current file.</li>
 <li>The app creates the file content from its current document</li>
 <li>The app returns the content.</li>
 <li>WebShell saves the file.</li>
 </ol>
-<h5 id="save-as">Save As</h5>
-<ol>
+
+      <h5>
+        <a name="save-as" class="anchor" href="#save-as">
+          <span class="header-link"></span>
+        </a>
+        Save As
+      </h5><ol>
 <li>The user clicks <strong>File &gt; Save As</strong> button</li>
 <li>WebShell displays the <strong>File Save As</strong> dialog to allow the user to choose a file name and format.</li>
 <li>WebShell sends the command to the app, setting <code>format</code> and <code>extension</code> from the dialog.</li>
@@ -285,8 +384,10 @@
 <li>WebShell sets the current file to the new file name and format.</li>
 </ol>
 
-    </article>
-  </main>
+        </article>
+      </div>
+    </div>
+    <div>
 </body>
 
 </html>

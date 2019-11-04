@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/_styles/styles.css">
   
   </link>
-  <title>WebShell</title>
+  <title>App Developer&#39;s Guide</title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
     <div id="main">
         <div id="content">
             <div id="pane">
-        <nav id="nav"><a class="item openable open visible active" data-nav-level="0" href=" /">
+        <nav id="nav"><a class="item openable open visible" data-nav-level="0" href=" /">
             WebShell
           </a><a class="item openable visible" data-nav-level="1" href=" /getting-started/">
             Getting Started
@@ -33,11 +33,11 @@
             Visit WebShell Sandbox
           </a><a class="item " data-nav-level="2" href=" /getting-started/template-repos">
             App Template Repos
-          </a><a class="item openable visible" data-nav-level="1" href=" /app-developer-guide/">
+          </a><a class="item openable open visible active" data-nav-level="1" href=" /app-developer-guide/">
             App Developer&#39;s Guide
-          </a><a class="item " data-nav-level="2" href=" /app-developer-guide/works-how">
+          </a><a class="item visible" data-nav-level="2" href=" /app-developer-guide/works-how">
             How It Works
-          </a><a class="item openable" data-nav-level="2" href=" /tutorial/">
+          </a><a class="item openable visible" data-nav-level="2" href=" /tutorial/">
             Tutorial
           </a><a class="item " data-nav-level="3" href=" /tutorial/step1">
             Step 1 - Import the library
@@ -75,66 +75,65 @@
       </div>
       <aside><nav id="toc">
           <a class="item" data-toc-level="1" href="##">
-            WebShell
-          </a><a class="item" data-toc-level="2""  href=" #demo">
-            Demo
-          </a><a class="item" data-toc-level="2""  href=" #source">
-            Source
-          </a><a class="item" data-toc-level="2""  href=" #packages">
-            Packages
-          </a><a class="item" data-toc-level="2""  href=" #docs">
-            Docs
-          </a><a class="item" data-toc-level="2""  href=" #about">
-            About
+            App Developer's Guide
+          </a><a class="item" data-toc-level="2""  href=" #getting-started">
+            Getting Started
+          </a><a class="item" data-toc-level="3""  href=" #vanilla-js">
+            Vanilla JS
+          </a><a class="item" data-toc-level="3""  href=" #es6-modules">
+            ES6 Modules
+          </a><a class="item" data-toc-level="3""  href=" #common-js">
+            Common JS
+          </a><a class="item" data-toc-level="2""  href=" #manifest">
+            Manifest
           </a></nav></aside>
         <article class="markdown-body">
           <a name="#"></a><h1>
-            WebShell
-          </h1><p><strong><em>NOTE</em></strong>: This project is in early development stages.</p>
-<p>Read <a href="about">about the project</a>.</p>
-
+            App Developer&#39;s Guide
+          </h1>
       <h2>
-        <a name="demo" class="anchor" href="#demo">
+        <a name="getting-started" class="anchor" href="#getting-started">
           <span class="header-link"></span>
         </a>
-        Demo
-      </h2><p>Visit the <a href="https://websh.org/sandbox">WebShell Sandbox</a> too see WebShell in action.</p>
+        Getting Started
+      </h2><p>Your app must include the WebShellApp library.</p>
 
-      <h2>
-        <a name="source" class="anchor" href="#source">
+      <h3>
+        <a name="vanilla-js" class="anchor" href="#vanilla-js">
           <span class="header-link"></span>
         </a>
-        Source
-      </h2><p>Visit <a href="https://github.com/websh-org">WebShell&#39;s organization page</a> on Github.</p>
+        Vanilla JS
+      </h3><pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/@websh/web-shell-app/dist/web-shell-app.js"</span>&gt;</span></code></pre>
 
-      <h2>
-        <a name="packages" class="anchor" href="#packages">
+      <h3>
+        <a name="es6-modules" class="anchor" href="#es6-modules">
           <span class="header-link"></span>
         </a>
-        Packages
-      </h2><p>See the <a href="packages">list of NPM packages</a> produced by the project.</p>
+        ES6 Modules
+      </h3><pre><code class="language-sh">npm install @websh/web-shell-app</code></pre>
+<pre><code class="language-js"><span class="hljs-keyword">import</span> { WebShellApp } <span class="hljs-keyword">from</span> <span class="hljs-string">"@websh/web-shell-app"</span></code></pre>
 
-      <h2>
-        <a name="docs" class="anchor" href="#docs">
+      <h3>
+        <a name="common-js" class="anchor" href="#common-js">
           <span class="header-link"></span>
         </a>
-        Docs
-      </h2><ul>
-<li><a href="app-api">WebShell App API</a> - The API for WebShell apps.<ul>
-<li><a href="app-api-file">file</a> - Provides file operations (New, Open, Save) for apps.</li>
-</ul>
-</li>
-</ul>
+        Common JS
+      </h3><pre><code class="language-sh">npm install @websh/web-shell-app</code></pre>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> { WebShellApp } = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@websh/web-shell-app"</span>)</code></pre>
 
       <h2>
-        <a name="about" class="anchor" href="#about">
+        <a name="manifest" class="anchor" href="#manifest">
           <span class="header-link"></span>
         </a>
-        About
-      </h2><ul>
-<li><a href="about">About the WebShell Project</a></li>
-<li><a href="milestones">Milestones</a></li>
-</ul>
+        Manifest
+      </h2><p>Your app must provide a manifest with information about it. It must be a JSONable object. To specify your app&#39;s manifest, use <code>WebShellApp.manifest()</code>.</p>
+<pre><code class="language-js">WebShellApp.manifest({
+  <span class="hljs-attr">v</span>: <span class="hljs-number">0</span> <span class="hljs-comment">// must be 0 for now,</span>
+  <span class="hljs-attr">name</span>: <span class="hljs-string">"My First App"</span>, 
+  <span class="hljs-attr">short_name</span>: <span class="hljs-string">"MyApp"</span>,  <span class="hljs-comment">// This is optional</span>
+  <span class="hljs-attr">description</span>: <span class="hljs-string">"This is my first WebShell app."</span>,
+  <span class="hljs-attr">license</span>: <span class="hljs-string">"ISC"</span> <span class="hljs-comment">// or any SPDX-compliant license ID</span>
+})</code></pre>
 
         </article>
       </div>

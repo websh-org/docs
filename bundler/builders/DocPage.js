@@ -7,6 +7,7 @@ export class DocPage extends DocFile {
   get outfile() {
     return  this.parsed.name + ".html"
   }
+  
   async load(...args) {
     await super.load(...args);
 

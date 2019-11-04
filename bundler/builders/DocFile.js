@@ -2,7 +2,12 @@ import Path from "path";
 
 export class DocFile {
   data = {};
-  parents=[];
+  navParent = null;
+  navParents = [];
+  navChildren = [];
+  get navRoot() {
+    return this.navParents[0];
+  }
 
   get outfile() {
     return this.parsed.base;
